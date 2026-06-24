@@ -166,7 +166,13 @@ body {
 
 @media (max-width: 960px) {
   .hero-cta {
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: var(--spacing-sm);
+  }
+  .hero-cta .btn {
+    width: 100%;
   }
 }
 
@@ -179,7 +185,7 @@ body {
 
 @media (max-width: 960px) {
   .hero-image-block {
-    justify-content: flex-start;
+    justify-content: center;
   }
 }
 
@@ -208,7 +214,7 @@ body {
 
 @media (max-width: 960px) {
   .social-links {
-    justify-content: flex-start;
+    justify-content: center;
   }
 }
 
