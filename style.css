@@ -551,3 +551,18 @@ body {
     gap: var(--spacing-sm);
   }
 }
+
+/* Responsive Title for BUDDHAO */
+.mobile-only-title {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .pc-only-title {
+    display: none !important;
+  }
+  .mobile-only-title {
+    display: block !important;
+  }
+}
+
