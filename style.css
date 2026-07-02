@@ -93,9 +93,20 @@ body {
    Hero Section (Black Canvas)
 ========================================================= */
 .hero-wrapper {
-  background-color: var(--color-surface-dark);
+  background: radial-gradient(circle at 80% 20%, rgba(118, 185, 0, 0.12), transparent 50%),
+              linear-gradient(135deg, #020202 0%, #111111 100%);
+  background-size: 200% 200%;
+  animation: hero-gradient-shift 12s infinite alternate ease-in-out;
   color: var(--color-on-dark);
   border-bottom: 2px solid var(--color-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes hero-gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .hero-content {
@@ -199,6 +210,14 @@ body {
   overflow: hidden;
   position: relative;
   background-color: var(--color-surface-elevated);
+  box-shadow: 0 0 30px rgba(118, 185, 0, 0.15);
+  animation: avatar-float 6s ease-in-out infinite;
+}
+
+@keyframes avatar-float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
 }
 
 .profile-avatar-wrap img {
@@ -232,13 +251,14 @@ body {
   background: transparent;
   text-decoration: none;
   font-size: 18px;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .social-links a:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
   background-color: var(--color-surface-elevated);
+  transform: scale(1.1) translateY(-3px) rotate(4deg);
 }
 
 /* =========================================================
@@ -255,18 +275,41 @@ body {
   font-size: 16px;
   text-decoration: none;
   border-radius: var(--rounded-sm);
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
   border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:active::after {
+  width: 300px;
+  height: 300px;
 }
 
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-ink);
+  box-shadow: 0 4px 14px rgba(118, 185, 0, 0.2);
 }
 
 .btn-primary:hover {
   background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(118, 185, 0, 0.4);
 }
 
 .btn-outline {
@@ -278,6 +321,8 @@ body {
 .btn-outline:hover {
   background-color: var(--color-surface-soft);
   border-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(118, 185, 0, 0.1);
 }
 
 .btn-outline-on-dark {
@@ -289,6 +334,8 @@ body {
 .btn-outline-on-dark:hover {
   background-color: var(--color-on-dark);
   color: var(--color-ink);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 .btn-ghost-link {
@@ -331,18 +378,25 @@ body {
 }
 
 .nvidia-card {
-  background-color: var(--color-canvas);
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--color-hairline);
   border-radius: var(--rounded-sm);
   padding: var(--spacing-xl);
   position: relative;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.2s ease;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+              border-color 0.3s ease,
+              box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .nvidia-card:hover {
   border-color: var(--color-primary);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(118, 185, 0, 0.1),
+              0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 /* Signature corner square */
@@ -506,8 +560,9 @@ body {
 ========================================================= */
 .reveal-up {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .reveal-up.is-visible {
@@ -567,4 +622,48 @@ body {
     display: block !important;
   }
 }
+
+/* =========================================================
+   Ambient Background Glow Orbs
+ ========================================================= */
+.glow-orb {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(118, 185, 0, 0.08) 0%, rgba(118, 185, 0, 0) 70%);
+  filter: blur(80px);
+  z-index: -1;
+  pointer-events: none;
+  left: -100px;
+  top: -100px;
+  animation: orb-move-1 25s infinite alternate ease-in-out;
+}
+
+.glow-orb-2 {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 238, 178, 0.05) 0%, rgba(254, 238, 178, 0) 70%);
+  filter: blur(100px);
+  z-index: -1;
+  pointer-events: none;
+  right: -100px;
+  bottom: 10%;
+  animation: orb-move-2 30s infinite alternate ease-in-out;
+}
+
+@keyframes orb-move-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(120px, 80px) scale(1.15); }
+  100% { transform: translate(-40px, 150px) scale(0.9); }
+}
+
+@keyframes orb-move-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-100px, -120px) scale(0.9); }
+  100% { transform: translate(50px, -40px) scale(1.1); }
+}
+
 
