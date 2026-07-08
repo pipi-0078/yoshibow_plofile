@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>プライバシーポリシー | 中陰表・年忌表作成</title>
+    <meta
+      name="description"
+      content="中陰表・年忌表作成アプリのプライバシーポリシー。取得する情報、保存される情報、利用目的、第三者提供などについて記載しています。"
+    />
+    <link rel="canonical" href="https://yoshibow-plofile.vercel.app/chuin-privacy" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="privacy-page">
+    <div class="glow-orb"></div>
+    <div class="glow-orb-2"></div>
+
+    <header class="privacy-header">
+      <div class="container privacy-header-content reveal-up">
+        <a href="/" class="privacy-home-link">ヨシボウ</a>
+        <span>中陰表・年忌表作成</span>
+      </div>
+    </header>
+
+    <main class="privacy-main container reveal-up" style="--delay: 0.1s">
+      <article class="privacy-document">
+        <p class="privacy-kicker">Privacy Policy</p>
+        <h1>プライバシーポリシー</h1>
+        <p class="privacy-updated">最終更新日: 2026年7月6日</p>
+
+        <p>「中陰表・年忌表作成」（以下「本アプリ」）は、寺院向けに中陰表および年忌表を作成するためのアプリです。</p>
+
+        <h2>取得する情報</h2>
+        <p>本アプリは、開発者のサーバーへ個人情報を送信・収集しません。</p>
+        <p>アプリ内では、帳票作成のために以下の情報を入力できます。</p>
+        <ul>
+          <li>故人の俗名</li>
+          <li>法名、戒名、法号</li>
+          <li>生年月日</li>
+          <li>命日</li>
+          <li>寺院情報</li>
+          <li>QRコード用URL</li>
+          <li>QRコード下の説明文</li>
+        </ul>
+
+        <h2>保存される情報</h2>
+        <p>本アプリは、利便性のために寺院情報、表示設定、QRコード設定を端末内に保存します。</p>
+        <p>故人情報は保存しません。アプリを終了した場合や入力を消去した場合、故人情報は再利用されません。</p>
+
+        <h2>情報の利用目的</h2>
+        <p>入力された情報は、以下の目的でのみ利用されます。</p>
+        <ul>
+          <li>中陰表の作成</li>
+          <li>年忌表の作成</li>
+          <li>PDFの生成</li>
+          <li>AirPrintによる印刷</li>
+          <li>QRコードの生成</li>
+        </ul>
+
+        <h2>第三者提供</h2>
+        <p>本アプリは、入力された情報を開発者または第三者へ送信しません。</p>
+        <p>ただし、利用者が作成したPDFを共有、保存、印刷する場合、その操作先のアプリ、サービス、プリンタ等の取り扱いは、それぞれの提供元の規約およびプライバシーポリシーに従います。</p>
+
+        <h2>解析ツール・広告</h2>
+        <p>本アプリは、広告配信、アクセス解析、トラッキングのための外部SDKを使用しません。</p>
+
+        <h2>通信</h2>
+        <p>本アプリは、QRコード生成のために入力されたURLを端末内で処理します。URLの入力によって、開発者のサーバーへ情報が送信されることはありません。</p>
+
+        <h2>お問い合わせ</h2>
+        <p>お問い合わせは、<a href="/contact">お問い合わせフォーム</a>よりご連絡ください。</p>
+
+        <h2>改定</h2>
+        <p>本プライバシーポリシーは、必要に応じて改定される場合があります。重要な変更がある場合は、アプリ内またはサポートページ上でお知らせします。</p>
+      </article>
+    </main>
+
+    <footer class="site-footer reveal-up" style="--delay: 0.2s">
+      <div class="footer-content">
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <a href="/">トップページ</a>
+          <a href="/contact">お問い合わせ</a>
+        </nav>
+        <div style="font-size: 13px; letter-spacing: 0.05em;">&copy; 2024 KOKORO TERASU Project</div>
+      </div>
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
+
+      document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>

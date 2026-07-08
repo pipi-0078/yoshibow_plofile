@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>お問い合わせ | ヨシボウ</title>
+    <meta name="description" content="ヨシボウへのお問い合わせフォームです。" />
+    <link rel="canonical" href="https://yoshibow-plofile.vercel.app/contact" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="privacy-page">
+    <div class="glow-orb"></div>
+    <div class="glow-orb-2"></div>
+
+    <header class="privacy-header">
+      <div class="container privacy-header-content reveal-up">
+        <a href="/" class="privacy-home-link">ヨシボウ</a>
+        <span>お問い合わせ</span>
+      </div>
+    </header>
+
+    <main class="privacy-main container reveal-up" style="--delay: 0.1s">
+      <article class="privacy-document contact-document">
+        <p class="privacy-kicker">Contact</p>
+        <h1>お問い合わせ</h1>
+        <p class="contact-lead">ご質問やご相談がありましたら、以下のフォームからお送りください。</p>
+
+        <form class="contact-form" id="contactForm">
+          <div class="contact-field">
+            <label for="name">お名前</label>
+            <input type="text" id="name" name="name" autocomplete="name" required />
+          </div>
+
+          <div class="contact-field">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+          </div>
+
+          <div class="contact-field">
+            <label for="subject">件名</label>
+            <input type="text" id="subject" name="subject" required />
+          </div>
+
+          <div class="contact-field">
+            <label for="message">お問い合わせ内容</label>
+            <textarea id="message" name="message" rows="8" required></textarea>
+          </div>
+
+          <input class="contact-hidden" type="text" name="website" tabindex="-1" autocomplete="off" />
+
+          <button class="btn btn-primary contact-submit" type="submit">送信する</button>
+          <p class="contact-status" id="contactStatus" role="status" aria-live="polite"></p>
+        </form>
+      </article>
+    </main>
+
+    <footer class="site-footer reveal-up" style="--delay: 0.2s">
+      <div class="footer-content">
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <a href="/">トップページ</a>
+          <a href="/chuin-privacy">プライバシーポリシー</a>
+        </nav>
+        <div style="font-size: 13px; letter-spacing: 0.05em;">&copy; 2024 KOKORO TERASU Project</div>
+      </div>
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
+
+      document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+      const form = document.getElementById('contactForm');
+      const statusMessage = document.getElementById('contactStatus');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        statusMessage.textContent = '送信中です。';
+        statusMessage.className = 'contact-status';
+
+        const button = form.querySelector('button[type="submit"]');
+        button.disabled = true;
+
+        try {
+          const formData = new FormData(form);
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.fromEntries(formData))
+          });
+
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(result.message || '送信できませんでした。時間をおいて再度お試しください。');
+          }
+
+          form.reset();
+          statusMessage.textContent = '送信しました。お問い合わせありがとうございます。';
+          statusMessage.classList.add('is-success');
+        } catch (error) {
+          statusMessage.textContent = error.message;
+          statusMessage.classList.add('is-error');
+        } finally {
+          button.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>
