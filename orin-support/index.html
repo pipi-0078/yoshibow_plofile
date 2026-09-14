@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>おりん サポート | ヨシボウ</title>
+    <meta
+      name="description"
+      content="Apple Watchアプリ「おりん」に関するお問い合わせ先とプライバシーポリシーをご案内します。"
+    />
+    <link rel="canonical" href="https://yoshibow-plofile.vercel.app/orin-support" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="privacy-page">
+    <div class="glow-orb"></div>
+    <div class="glow-orb-2"></div>
+
+    <header class="privacy-header">
+      <div class="container privacy-header-content reveal-up">
+        <a href="/" class="privacy-home-link">ヨシボウ</a>
+        <span>おりん サポート</span>
+      </div>
+    </header>
+
+    <main class="privacy-main container reveal-up" style="--delay: 0.1s">
+      <article class="privacy-document contact-document">
+        <p class="privacy-kicker">Support</p>
+        <h1>おりん サポート</h1>
+        <p class="contact-lead">Apple Watchアプリ「おりん」に関するお問い合わせは、以下のフォームからご連絡ください。</p>
+
+        <h2>お問い合わせ</h2>
+        <p><a href="/contact">https://yoshibow-plofile.vercel.app/contact</a></p>
+
+        <h2>プライバシーポリシー</h2>
+        <p><a href="/chuin-privacy">https://yoshibow-plofile.vercel.app/chuin-privacy</a></p>
+      </article>
+    </main>
+
+    <footer class="site-footer reveal-up" style="--delay: 0.2s">
+      <div class="footer-content">
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <a href="/">トップページ</a>
+          <a href="/contact">お問い合わせ</a>
+          <a href="/chuin-privacy">プライバシーポリシー</a>
+        </nav>
+        <div style="font-size: 13px; letter-spacing: 0.05em;">&copy; 2024 KOKORO TERASU Project</div>
+      </div>
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
+
+      document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>

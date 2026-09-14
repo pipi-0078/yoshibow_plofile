@@ -1,2 +1,6 @@
 .vercel
 .DS_Store
+node_modules/
+test-results/
+assets/visuals-v2/*.png
+assets/visuals-v2/generation.json

@@ -1,0 +1,55 @@
+{
+  "method": "Built-in image_gen",
+  "requestedProfile": "GPT Image 2.5 / Sunburst / low (prompt specification)",
+  "assets": [
+    {
+      "name": "portrait",
+      "prompt": "Generation profile: GPT Image 2.5; Style: Sunburst; Quality: low. Create a finished premium editorial website image, not a website screenshot. Brand palette: black, white, lime green #76b900, soft ivory; other colors only subtle natural materials. No watermarks. Use case: style-transfer. Reference image is the owner's existing illustrated avatar; preserve his recognizable round glasses, black topknot, kind face and Buddhist robes, hands together. Redesign as sophisticated two-color Japanese woodcut meets contemporary editorial screenprint on ivory textured paper. Waist-up graphic portrait, mature editorial illustration, strong black ink, lime accent halo, delicate grain, hand-carved contours, generous breathing room. Square image. No text. Avoid cute glossy 3D, huge sparkly anime eyes, computer props. Still visibly the same avatar, not a real-person photograph.",
+      "file": "assets/visuals-v2/portrait.webp",
+      "width": 800,
+      "height": 800
+    },
+    {
+      "name": "community",
+      "prompt": "Generation profile: GPT Image 2.5; Style: Sunburst; Quality: low. Create a finished premium editorial website image, not a website screenshot. Brand palette: black, white, lime green #76b900, soft ivory; other colors only subtle natural materials. No watermarks. Use case: stylized-concept. Wide 16:9 conceptual art for BUDDHAO, a cross-sect Buddhist community. A sculptural circle of seven individually shaped smooth black and ivory stone loops, each upright, forming an open connected gathering on a matte ivory surface. A single striking translucent lime glass loop links the group in the foreground. Museum-quality physical installation photographed from a high three-quarter angle, sculptural shadows cast diagonally, tactile plaster and polished glass, asymmetric spacious composition. No people, no faces, no Buddha statue, no text, no logos. Make it about connection and equal participation, warm and inviting.",
+      "file": "assets/visuals-v2/community.webp",
+      "width": 1400,
+      "height": 788
+    },
+    {
+      "name": "newsletter",
+      "prompt": "Generation profile: GPT Image 2.5; Style: Sunburst; Quality: low. Create a finished premium editorial website image, not a website screenshot. Brand palette: black, white, lime green #76b900, soft ivory; other colors only subtle natural materials. No watermarks. Use case: photorealistic-natural. Wide 16:9 overhead editorial still life for a seven-day email course about thinking with AI. A beautiful open white envelope and seven lightly fanned blank ivory cards on a saturated lime green paper background. A single small black binder clip and a fine black pencil. Raking afternoon sunlight, crisp architectural long shadow across the composition, tangible paper fibers, high-end stationery campaign. Cards mostly toward center-left, purposeful restrained geometry. No people, no screens, no illustrations, no readable text, no desk room, no extra objects.",
+      "file": "assets/visuals-v2/newsletter.webp",
+      "width": 1400,
+      "height": 788
+    },
+    {
+      "name": "textbook",
+      "prompt": "Generation profile: GPT Image 2.5; Style: Sunburst; Quality: low. Create a finished premium editorial website image, not a website screenshot. Brand palette: black, white, lime green #76b900, soft ivory; other colors only subtle natural materials. No watermarks. Use case: product-mockup. Wide 16:9 premium editorial book cover still life. A single beautifully designed upright black softcover book at a slight angle, large clean exact title 'AI' in lime green geometric lettering and small exact subtitle 'THINK WITH ME' in white; no other letters. Fine ivory concentric conversation-line pattern on lower half of the cover. A second book lies flat below, off-white spine without writing. Pale stone-gray studio background with a little lime paper corner, directional dramatic soft light, high-end Swiss book-design photography, tactile matte cover, rigorous typography. No people, no computers, no libraries. All books completely within central 70 percent to allow wide cropping.",
+      "file": "assets/visuals-v2/textbook.webp",
+      "width": 1400,
+      "height": 788
+    },
+    {
+      "name": "podcast",
+      "prompt": "Generation profile: GPT Image 2.5; Style: Sunburst; Quality: low. Create a finished premium editorial website image, not a website screenshot. Brand palette: black, white, lime green #76b900, soft ivory; other colors only subtle natural materials. No watermarks. Use case: stylized-concept. Wide 16:9 sophisticated abstract album art about listening, Buddhist reflection and the warmth of a spoken voice. A single luminous lime circular ripple softly expands into many extremely fine concentric rings on a near-black background. Off-center circular source at left, rings interacting with subtle ivory flowing wave lines toward right, minimalist analog cymatics, delicate film grain, poetic and calm rather than technology dashboard. Distinct dark image with plenty of negative space, premium experimental music cover, almost tactile engraved grooves. No text, no microphone, no headphones, no people, no neon rainbow.",
+      "file": "assets/visuals-v2/podcast.webp",
+      "width": 1400,
+      "height": 788
+    },
+    {
+      "name": "temple-future",
+      "prompt": "Generation profile: GPT Image 2.5; Style: Sunburst; Quality: low. Create a finished premium editorial website image, not a website screenshot. Brand palette: black, white, lime green #76b900, soft ivory; other colors only subtle natural materials. No watermarks. Use case: illustration-story. Wide 16:9 architectural editorial collage for a podcast about the future of Japanese Buddhist temples and AI. A striking Japanese temple roof and simple timber hall rendered as a monochrome architectural photographic cutout, layered across off-white paper with precise lime green blueprint lines extending into space and small abstract geometric planning forms. Side elevation with strong horizontal roof silhouette, left-to-right spatial rhythm, torn-paper material detail, technical drawing and photography mix, contemporary architecture magazine, restrained and elegant. Not an actual identified temple or promised building. No people, no robots, no screens, no text, no letters, no pagoda fantasy.",
+      "file": "assets/visuals-v2/temple-future.webp",
+      "width": 1400,
+      "height": 788
+    },
+    {
+      "name": "column",
+      "prompt": "Generation profile: GPT Image 2.5; Style: Sunburst; Quality: low. Create a finished premium editorial website image, not a website screenshot. Brand palette: black, white, lime green #76b900, soft ivory; other colors only subtle natural materials. No watermarks. Use case: photorealistic-natural. Wide 16:9 contemplative fine-art architectural photograph from inside a quiet traditional Japanese temple corridor. Close view of textured white shoji screens on left with soft rectangular sunlight falling over a dark timber floor, and a narrow opening onto a fresh green moss garden at right. Minimal composition, understated rich blacks, ivory light, natural moss green harmonizing with lime palette. Quiet morning, natural photographic grain, fine wood texture, no dramatic sunset. No people, no statues, no books, no lettering, no identifiable real place. Emphasize light, silence and generous empty space. Premium Japanese architecture magazine photography.",
+      "file": "assets/visuals-v2/column.webp",
+      "width": 1400,
+      "height": 788
+    }
+  ]
+}

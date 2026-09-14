@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -9,224 +9,912 @@
       content="浄土真宗寺院の僧侶、マインドフルネススペシャリスト、ヨシボウのプロフィール。仏教とココロの専門家として活動中。"
     />
     <!-- Fonts -->
+    <link rel="canonical" href="https://yoshibow-plofile.vercel.app/" />
+    <meta name="theme-color" content="#0b100b" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/home.css" />
+    <script type="module" src="scripts/home.js"></script>
   </head>
-  <body>
+  <body class="stripe-home experience">
+    <a class="skip-link" href="#projects">コンテンツへスキップ</a>
+    <nav class="main-nav container" aria-label="メインナビゲーション">
+      <a class="wordmark" href="#" aria-label="ヨシボウ ホーム"
+        ><span class="brand-symbol" aria-hidden="true">y.</span> yoshibow<span
+          class="brand-dot"
+          >.</span
+        ></a
+      >
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-menu"
+      >
+        メニュー <span aria-hidden="true">＋</span>
+      </button>
+      <div class="nav-links" id="site-menu">
+        <a href="#about">プロフィール</a><a href="#community">コミュニティ</a
+        ><a href="#contents">コンテンツ</a><a href="#apps">アプリ</a>
+      </div>
+      <a class="nav-contact" href="/contact"
+        >お問い合わせ <span aria-hidden="true">↗</span></a
+      >
+    </nav>
+    <div class="reading-progress" aria-hidden="true"></div>
     <!-- Ambient Background Glow Orbs -->
     <div class="glow-orb"></div>
     <div class="glow-orb-2"></div>
 
-    <!-- Hero / Header Section (Black Canvas) -->
-    <div class="hero-wrapper reveal-up">
-      <header class="hero-content container">
+    <!-- Interactive introduction -->
+    <section class="hero-wrapper" id="about" aria-labelledby="hero-title">
+      <canvas id="enso-canvas" aria-hidden="true"></canvas>
+      <div class="enso-fallback" aria-hidden="true"></div>
+      <div class="hero-content container">
         <div class="hero-text-block">
-          <span class="hero-subtitle">Buddhist Monk &amp; AI Specialist</span>
-          <h1 class="hero-title">ヨシボウ<span style="font-size: 20px; font-weight: 400; color: var(--color-primary); display: block; margin-top: 8px;">＠僧侶×AI活用の人</span></h1>
-          <p class="hero-description">
-            浄土真宗寺院の僧侶、マインドフルネススペシャリスト。<br />
-            仏教の智慧と<strong>最新のAI技術を融合</strong>させ、現代のココロの課題と向き合っています。<br />
-            「思考の壁打ち」としてのAI活用を提唱。<br />
-            <strong>寺院運営の未来をAIとコミュニティの力で切り開いて</strong>参ります！
+          <span class="hero-subtitle"
+            ><span class="status-dot"></span> 僧侶 × AI活用</span
+          >
+          <p class="hero-display" aria-hidden="true">
+            受け継ぐ智慧。<br />新しい技術。<br /><span>こころの未来へ。</span>
           </p>
+          <h1 class="hero-title" id="hero-title">
+            仏教の智慧と、AIの可能性を。<br />ココロの未来へ。
+          </h1>
           <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">プロジェクトを見る</a>
-            <a href="https://ai-houwa-mail-magazine.vercel.app/" target="_blank" class="btn btn-outline-on-dark">無料メルマガ登録</a>
-          </div>
-          <div class="social-links">
-             <a href="https://x.com/chad78xx" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-             <a href="https://www.threads.com/@yoshi_bows" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
-             <a href="https://open.spotify.com/show/7wmjpPbDNrY8p14s6OCBhP?si=dOve6xM8SOuJUyMiBr7v1g" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
-             <a href="https://substack.com/@yoshibow" target="_blank" aria-label="Substack">
-               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; fill: currentColor; vertical-align: middle;">
-                 <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
-               </svg>
-             </a>
+            <a href="#projects" class="btn btn-primary"
+              >活動を探索する <span aria-hidden="true">↘</span></a
+            ><a href="#apps" class="hero-app-link"
+              >つくったアプリを見る <span aria-hidden="true">↗</span></a
+            >
           </div>
         </div>
-        <div class="hero-image-block">
-          <div class="profile-avatar-wrap">
-            <img src="IMG_7251.JPG" alt="ヨシボウ" />
+        <div class="hero-signature">
+          <img
+            src="assets/visuals-v2/portrait.webp"
+            alt="ヨシボウの版画風ポートレート"
+            width="80"
+            height="80"
+            fetchpriority="high"
+          />
+          <div>
+            <strong>Yoshibow</strong><span>ヨシボウ ／ 僧侶 × AI活用</span>
           </div>
         </div>
-      </header>
+        <div class="hero-foot">
+          <span>スクロールして活動を見る <span aria-hidden="true">↓</span></span
+          ><button type="button" class="motion-toggle" aria-pressed="false">
+            動きを停止</button
+          ><span class="hero-coordinate">智慧 / 技術 / つながり</span>
+        </div>
+      </div>
+    </section>
+    <section class="profile-statement container" aria-label="プロフィール">
+      <span class="eyebrow">THE PERSON BEHIND</span>
+      <div>
+        <p>仏教の智慧を、<br /><span>これからの日常へ。</span></p>
+        <div class="profile-description">
+          浄土真宗寺院の僧侶、マインドフルネススペシャリスト。<br />仏教の智慧とAI技術を融合させ、現代のココロの課題と向き合っています。「思考の壁打ち」としてのAI活用を提唱し、寺院運営の未来をAIとコミュニティの力で切り開いて参ります。
+        </div>
+        <div class="social-links">
+          <a
+            href="https://x.com/chad78xx"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X (Twitter)"
+            ><i class="fa-brands fa-x-twitter"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/@yoshibows"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube（新しいタブで開きます）"
+            ><i class="fa-brands fa-youtube" aria-hidden="true"></i
+          ></a>
+          <a
+            href="https://www.threads.com/@yoshi_bows"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Threads"
+            ><i class="fa-brands fa-threads"></i
+          ></a>
+          <a
+            href="https://open.spotify.com/show/7wmjpPbDNrY8p14s6OCBhP?si=dOve6xM8SOuJUyMiBr7v1g"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Spotify"
+            ><i class="fa-brands fa-spotify"></i
+          ></a>
+          <a
+            href="https://substack.com/@yoshibow"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Substack"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              style="
+                width: 20px;
+                height: 20px;
+                fill: currentColor;
+                vertical-align: middle;
+              "
+            >
+              <path
+                d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+    <div class="topic-strip">
+      <div class="container">
+        <span>BUDDHISM <i>仏教の智慧</i></span
+        ><span class="strip-plus">＋</span
+        ><span>TECHNOLOGY <i>AIの活用</i></span
+        ><span class="strip-plus">＋</span
+        ><span>COMMUNITY <i>人とのつながり</i></span>
+      </div>
     </div>
+    <!-- Main Content Section -->
+    <main
+      class="body-section container reveal-up"
+      id="projects"
+      style="--delay: 0.1s"
+    >
+      <div class="section-intro">
+        <span class="eyebrow">01 — COMMUNITY</span>
+        <h2 class="section-headline">
+          学び、つながり、<br />ともに未来をつくる。
+        </h2>
+        <p>
+          仏教とAIの交わるところから、<br />日々の実践につながるプロジェクトを。
+        </p>
+      </div>
 
-    <!-- Main Content Section (White Canvas) -->
-    <main class="body-section container reveal-up" id="projects" style="--delay: 0.1s">
-      <h2 class="section-headline">主要プロジェクト</h2>
-      
       <!-- Highlighted BUDDHAO Community Card (1 Column Layout) -->
-      <article class="nvidia-card featured" style="margin-bottom: var(--spacing-xxl);">
-        <div class="corner-square"></div>
-        
-        <span class="badge-tag">Featured Community</span>
-        <h3 class="card-title pc-only-title" style="font-size: 32px; margin-bottom: var(--spacing-md);">宗派を超えた僧侶のコミュニティ「BUDDHAO（ブッダオ）」</h3>
-        <h3 class="card-title mobile-only-title" style="font-size: 32px; margin-bottom: var(--spacing-md); display: none;">超宗派コミュニティ「BUDDHAO（ブッダオ）」</h3>
-        
-        <div class="card-image-wrap" style="aspect-ratio: 21 / 9; overflow: hidden; margin-bottom: var(--spacing-xl);">
-          <img src="Buddhao_3abe7aa147.jpeg" alt="コミュニティ BUDDHAO" />
+      <article
+        id="community"
+        class="nvidia-card featured"
+        style="margin-bottom: var(--spacing-xxl)"
+      >
+        <span class="badge-tag">01 / FEATURED COMMUNITY</span>
+        <h3
+          class="card-title pc-only-title"
+          style="font-size: 32px; margin-bottom: var(--spacing-md)"
+        >
+          宗派を超えた僧侶のコミュニティ「BUDDHAO（ブッダオ）」
+        </h3>
+        <h3
+          class="card-title mobile-only-title"
+          style="
+            font-size: 32px;
+            margin-bottom: var(--spacing-md);
+            display: none;
+          "
+        >
+          超宗派コミュニティ「BUDDHAO（ブッダオ）」
+        </h3>
+
+        <div
+          class="card-image-wrap"
+          style="
+            aspect-ratio: 21 / 9;
+            overflow: hidden;
+            margin-bottom: var(--spacing-xl);
+          "
+        >
+          <img
+            loading="lazy"
+            decoding="async"
+            src="assets/visuals-v2/community.webp"
+            alt="石と緑のガラスの輪が集まり、宗派を超えたつながりを表す立体アート"
+            width="1400"
+            height="788"
+          />
         </div>
 
-        <div class="card-content">
-          <h4 style="font-size: 22px; font-weight: 700; color: var(--color-ink); margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md); border-left: 4px solid var(--color-primary); padding-left: 12px; line-height: 1.25;">現代の寺院が抱える共通の課題</h4>
-          <p style="margin-bottom: var(--spacing-md);">檀家減少や後継者不足、地域コミュニティの希薄化など、現代の寺院が直面する構造的な課題は<strong>宗派を問いません</strong>。</p>
-          <p style="margin-bottom: var(--spacing-md);"><strong>「AIを法話や日々の運営にどう活かすか」</strong>もまた、全僧侶にとっての共通テーマです。</p>
-          <p style="margin-bottom: var(--spacing-xl);">しかし、利害関係や上下関係の生じやすい同宗派内では、<strong>「法話の悩み」や「ITツールへの不安」を気軽に打ち明けにくい</strong>現状があります。</p>
-
-          <h4 style="font-size: 22px; font-weight: 700; color: var(--color-ink); margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md); border-left: 4px solid var(--color-primary); padding-left: 12px; line-height: 1.25;">宗派の垣根を超えたフラットな繋がり</h4>
-          <p style="margin-bottom: var(--spacing-md);">BUDDHAOは、そうした孤立しがちな僧侶が宗派の垣根を超えて繋がり、知恵を共有し合える<strong>Discord上の永久無料コミュニティ</strong>です。</p>
-          <p style="margin-bottom: var(--spacing-md);">他宗派の多様な視点や独自の工夫に触れることで、自寺院の運営や法話作成に<strong>新鮮な気づきと革新</strong>をもたらします。</p>
-          <p style="margin-bottom: var(--spacing-md); font-weight: 700; color: var(--color-primary);">＊2026/6/18更新！</p>
-          <p style="margin-bottom: var(--spacing-md); font-weight: 700; color: var(--color-primary);">BUDDHAOコミュニティは、どなたでも無料で参加できるようになりました！</p>
-          <p style="margin-bottom: var(--spacing-md); font-weight: 700; color: var(--color-ink);">「お坊さんのためのAI活用の教科書」の購入者さまには限定チャンネルを新設し、より充実したコミュニケーションが取れるようにしています。</p>
+        <div class="community-overview">
+          <span class="community-name">BUDDHAO</span>
+          <p>
+            宗派の垣根を超えて繋がり、知恵を共有し合える<br
+              class="desktop-break"
+            />Discord上の参加費無料のコミュニティ。
+          </p>
+          <a
+            href="https://buddhao-join.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+            >無料でコミュニティに参加 <span aria-hidden="true">→</span></a
+          ><span class="community-note">どなたでも無料で参加できます</span>
         </div>
-
-        <div style="border-top: 1px solid var(--color-hairline); margin-top: var(--spacing-xl); padding-top: var(--spacing-xl);">
-          <span class="card-price-badge" style="margin-bottom: var(--spacing-md);">note教材購入者特典</span>
-          
-          <div class="card-content" style="margin-bottom: var(--spacing-md);">
-            <p style="font-weight: 700; color: var(--color-ink); margin-bottom: var(--spacing-sm); font-size: 22px;">🎁 マガジン「AI活用の教科書」購入者限定 VIP特典</p>
-            <p style="font-size: 18px; line-height: 1.6; color: var(--color-body); margin-bottom: var(--spacing-md);">
-              マガジン購入者さまには、サーバー内で「VIP」ロール（権限）を付与し、さらに深い情報交換が可能な限定チャンネルを開放します。
+        <details class="community-details">
+          <summary>
+            コミュニティについて詳しく見る <span aria-hidden="true">＋</span>
+          </summary>
+          <div class="card-content">
+            <h4
+              style="
+                font-size: 22px;
+                font-weight: 700;
+                color: var(--color-ink);
+                margin-top: var(--spacing-lg);
+                margin-bottom: var(--spacing-md);
+                border-left: 4px solid var(--color-primary);
+                padding-left: 12px;
+                line-height: 1.25;
+              "
+            >
+              現代の寺院が抱える共通の課題
+            </h4>
+            <p style="margin-bottom: var(--spacing-md)">
+              檀家減少や後継者不足、地域コミュニティの希薄化など、現代の寺院が直面する構造的な課題は<strong>宗派を問いません</strong>。
             </p>
-            <ul class="vip-benefit-list">
-              <li style="display: flex; align-items: flex-start; gap: 8px;">
-                <span style="color: var(--color-primary); flex-shrink: 0; font-size: 20px;">🛠️</span>
-                <div><strong>便利ツール置き場:</strong> 独自のWebアプリや特定の作業を効率化するGPTs、AI活用ツールなどの開発データを共有します。</div>
-              </li>
-              <li style="display: flex; align-items: flex-start; gap: 8px;">
-                <span style="color: var(--color-primary); flex-shrink: 0; font-size: 20px;">💬</span>
-                <div><strong>マガジン直接質問:</strong> 教科書を読みながら疑問に思ったこと、実践時の不明点を直接ヨシボウに何でも質問できます。</div>
-              </li>
-              <li style="display: flex; align-items: flex-start; gap: 8px;">
-                <span style="color: var(--color-primary); flex-shrink: 0; font-size: 20px;">👑</span>
-                <div><strong>独自チャンネル作成権:</strong> 仏教関連のテーマで、コミュニティ内にご自身専用のチャンネルを作成できます（先着5〜10名様限定）。</div>
-              </li>
-            </ul>
-          </div>
+            <p style="margin-bottom: var(--spacing-md)">
+              <strong>「AIを法話や日々の運営にどう活かすか」</strong
+              >もまた、全僧侶にとっての共通テーマです。
+            </p>
+            <p style="margin-bottom: var(--spacing-xl)">
+              しかし、利害関係や上下関係の生じやすい同宗派内では、<strong>「法話の悩み」や「ITツールへの不安」を気軽に打ち明けにくい</strong>現状があります。
+            </p>
 
-          <div class="editorial-callout" style="margin-bottom: var(--spacing-xl); width: 100%;">
-            <i class="fa-solid fa-circle-info"></i>
-            <span><strong>VIPロールの受け取り方:</strong> 参加後、Discord内でヨシボウにメッセージをお送りください。「VIP」ロールを付与します。</span>
+            <h4
+              style="
+                font-size: 22px;
+                font-weight: 700;
+                color: var(--color-ink);
+                margin-top: var(--spacing-xl);
+                margin-bottom: var(--spacing-md);
+                border-left: 4px solid var(--color-primary);
+                padding-left: 12px;
+                line-height: 1.25;
+              "
+            >
+              宗派の垣根を超えたフラットな繋がり
+            </h4>
+            <p style="margin-bottom: var(--spacing-md)">
+              BUDDHAOは、そうした孤立しがちな僧侶が宗派の垣根を超えて繋がり、知恵を共有し合える<strong>Discord上の参加費無料のコミュニティ</strong>です。
+            </p>
+            <p style="margin-bottom: var(--spacing-md)">
+              他宗派の多様な視点や独自の工夫に触れることで、自寺院の運営や法話作成に<strong>新鮮な気づきと革新</strong>をもたらします。
+            </p>
+            <p
+              style="
+                margin-bottom: var(--spacing-md);
+                font-weight: 700;
+                color: var(--color-primary);
+              "
+            >
+              ＊2026/6/18更新！
+            </p>
+            <p
+              style="
+                margin-bottom: var(--spacing-md);
+                font-weight: 700;
+                color: var(--color-primary);
+              "
+            >
+              BUDDHAOコミュニティは、どなたでも無料で参加できるようになりました！
+            </p>
+            <p
+              style="
+                margin-bottom: var(--spacing-md);
+                font-weight: 700;
+                color: var(--color-ink);
+              "
+            >
+              「お坊さんのためのAI活用の教科書」の購入者さまには限定チャンネルを新設し、より充実したコミュニケーションが取れるようにしています。
+            </p>
           </div>
+        </details>
+        <details class="community-details vip-details">
+          <summary>
+            AI活用の教科書・購入者限定特典 <span aria-hidden="true">＋</span>
+          </summary>
+          <div
+            style="
+              border-top: 1px solid var(--color-hairline);
+              margin-top: var(--spacing-xl);
+              padding-top: var(--spacing-xl);
+            "
+          >
+            <span
+              class="card-price-badge"
+              style="margin-bottom: var(--spacing-md)"
+              >note教材購入者特典</span
+            >
 
-          <div class="featured-footer">
-            <a href="#" class="btn btn-primary" style="flex: 1;">BUDDHAOに参加する（無料）</a>
-            <a href="https://note.com/yoshibows/n/nb8b13afc6b0e" target="_blank" class="btn btn-outline" style="flex: 1;">BUDDHAOの詳細を見る</a>
+            <div class="card-content" style="margin-bottom: var(--spacing-md)">
+              <p
+                style="
+                  font-weight: 700;
+                  color: var(--color-ink);
+                  margin-bottom: var(--spacing-sm);
+                  font-size: 22px;
+                "
+              >
+                マガジン「AI活用の教科書」購入者限定 VIP特典
+              </p>
+              <p
+                style="
+                  font-size: 18px;
+                  line-height: 1.6;
+                  color: var(--color-body);
+                  margin-bottom: var(--spacing-md);
+                "
+              >
+                マガジン購入者さまには、サーバー内で「VIP」ロール（権限）を付与し、さらに深い情報交換が可能な限定チャンネルを開放します。
+              </p>
+              <ul class="vip-benefit-list">
+                <li style="display: flex; align-items: flex-start; gap: 8px">
+                  <div>
+                    <strong>便利ツール置き場:</strong>
+                    独自のWebアプリや特定の作業を効率化するGPTs、AI活用ツールなどの開発データを共有します。
+                  </div>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 8px">
+                  <div>
+                    <strong>マガジン直接質問:</strong>
+                    教科書を読みながら疑問に思ったこと、実践時の不明点を直接ヨシボウに何でも質問できます。
+                  </div>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 8px">
+                  <div>
+                    <strong>独自チャンネル作成権:</strong>
+                    仏教関連のテーマで、コミュニティ内にご自身専用のチャンネルを作成できます（先着5〜10名様限定）。
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="editorial-callout"
+              style="margin-bottom: var(--spacing-xl); width: 100%"
+            >
+              <i class="fa-solid fa-circle-info"></i>
+              <span
+                ><strong>VIPロールの受け取り方:</strong>
+                参加後、Discord内でヨシボウにメッセージをお送りください。「VIP」ロールを付与します。</span
+              >
+            </div>
+
+            <div class="featured-footer">
+              <a
+                href="https://buddhao-join.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-primary"
+                style="flex: 1"
+                >BUDDHAOに参加する（無料）</a
+              >
+              <a
+                href="https://note.com/yoshibows/n/nb8b13afc6b0e"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline"
+                style="flex: 1"
+                >BUDDHAOの詳細を見る</a
+              >
+            </div>
           </div>
-        </div>
+        </details>
       </article>
-      
-      <!-- Grid for the other 3 projects -->
+
+      <!-- Articles, audio and video -->
+      <div class="content-heading" id="contents">
+        <div>
+          <span class="eyebrow">02 — JOURNAL & AUDIO</span>
+          <h2>あなたに合った入口から。</h2>
+        </div>
+        <p>読む。聴く。試してみる。</p>
+      </div>
       <div class="card-grid">
         <!-- Item 1: メルマガ -->
-        <article class="nvidia-card">
-          <div class="corner-square"></div>
+        <article class="nvidia-card story-card story-newsletter">
           <span class="badge-tag">Newsletter</span>
           <h3 class="card-title">7日間AI法話メルマガ（無料）</h3>
           <div class="card-image-wrap">
-            <img src="newsletter-image.png" alt="書斎で手紙を書くキャラクター" />
+            <img
+              loading="lazy"
+              decoding="async"
+              src="assets/visuals-v2/newsletter.webp"
+              alt="緑の背景に封筒とカードを並べた、7日間メール講座のイメージ"
+              width="1400"
+              height="788"
+            />
           </div>
           <div class="card-content">
-            <p>「AIで法話を作る」と聞いて、何から始めればいいかわからない。そうした方のために作成した<strong>7日間の無料メール講座</strong>です。</p>
-            <p>単なるツールの操作説明ではなく、<strong>「どう考えるか」という思考の整理と設計</strong>からスタートします。</p>
-            <p>AIは法話を自動生成する道具ではありません。あなたの思考を引き出す<strong>「最強の壁打ち相手」</strong>です。その本質が7日後にはきっと腑に落ちるはずです。</p>
-            
-            <div class="editorial-callout">
-              <i class="fa-solid fa-gift"></i>
-              <span>今なら購読特典として <span class="highlight">「壁打ちプロンプト30選（PDF）」</span> をプレゼント！</span>
-            </div>
+            <p>
+              「AIで法話を作る」と聞いて、何から始めればいいかわからない。そうした方のために作成した<strong>7日間の無料メール講座</strong>です。
+            </p>
+            <details class="story-details">
+              <summary>詳しく読む <span aria-hidden="true">＋</span></summary>
+              <div>
+                <p>
+                  単なるツールの操作説明ではなく、<strong>「どう考えるか」という思考の整理と設計</strong>からスタートします。
+                </p>
+                <p>
+                  AIは法話を自動生成する道具ではありません。あなたの思考を引き出す<strong>「最強の壁打ち相手」</strong>です。その本質が7日後にはきっと腑に落ちるはずです。
+                </p>
+
+                <div class="editorial-callout">
+                  <i class="fa-solid fa-gift"></i>
+                  <span
+                    >今なら購読特典として
+                    <span class="highlight"
+                      >「壁打ちプロンプト30選（PDF）」</span
+                    >
+                    をプレゼント！</span
+                  >
+                </div>
+              </div>
+            </details>
           </div>
           <div class="card-footer">
-            <a href="https://ai-houwa-mail-magazine.vercel.app/" target="_blank" class="btn btn-outline" style="width: 100%;">無料メルマガに登録する</a>
+            <a
+              href="https://ai-houwa-mail-magazine.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              style="width: 100%"
+              >無料メルマガに登録する</a
+            >
           </div>
         </article>
 
         <!-- Item 2: note教材 -->
-        <article class="nvidia-card">
-          <div class="corner-square"></div>
+        <article class="nvidia-card story-card story-textbook">
           <span class="badge-tag">Note Textbook</span>
           <h3 class="card-title">お坊さんのためのAI活用の教科書</h3>
           <div class="card-image-wrap">
-            <img src="169pc_2k_delpmaspu.png" alt="お坊さんのためのAI活用の教科書" />
+            <img
+              loading="lazy"
+              decoding="async"
+              src="assets/visuals-v2/textbook.webp"
+              alt="AIとの対話を表す線画をあしらった、教材のブックデザインイメージ"
+              width="1400"
+              height="788"
+            />
           </div>
           <div class="card-content">
-            <p>毎月の法座が近づくたびに憂鬱になり、ネタが思い浮かばず原稿の前で何時間も手が止まってしまう。そうした<strong>悩みを抱える僧侶の方に向けて</strong>執筆しました。</p>
-            <p>AIに丸投げするのではなく、「思考の壁打ち相手」として活用し、<strong>あなた自身の言葉で法話を組み立てる体系的なメソッド</strong>です。</p>
-            <p>ObsidianやローカルAI、Notion AIなど、実際に私が活用しているツールをベースに、<strong>導入から応用まで丁寧に解説</strong>。随時無料アップデートを行っています。</p>
+            <p>
+              毎月の法座が近づくたびに憂鬱になり、ネタが思い浮かばず原稿の前で何時間も手が止まってしまう。そうした<strong>悩みを抱える僧侶の方に向けて</strong>執筆しました。
+            </p>
+            <details class="story-details">
+              <summary>詳しく読む <span aria-hidden="true">＋</span></summary>
+              <div>
+                <p>
+                  AIに丸投げするのではなく、「思考の壁打ち相手」として活用し、<strong>あなた自身の言葉で法話を組み立てる体系的なメソッド</strong>です。
+                </p>
+                <p>
+                  ObsidianやNotion
+                  AIなど、実際にぼくが活用しているツールをベースに、<strong>導入から応用まで丁寧に解説</strong>。随時無料アップデートを行っています。
+                </p>
+              </div>
+            </details>
           </div>
           <div class="card-footer">
-            <a href="https://note.com/yoshibows/m/mcf7b620dca65" target="_blank" class="btn btn-outline" style="width: 100%;">noteで詳細を見る</a>
+            <a
+              href="https://note.com/yoshibows/m/mcf7b620dca65"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              style="width: 100%"
+              >noteで詳細を見る</a
+            >
           </div>
         </article>
 
         <!-- Item 3: ポッドキャスト -->
-        <article class="nvidia-card">
-          <div class="corner-square"></div>
+        <article class="nvidia-card story-card story-podcast">
           <span class="badge-tag">Podcast</span>
           <h3 class="card-title">ポッドキャスト（AIを活用した法話）</h3>
           <div class="card-image-wrap">
-            <img src="podcast-image.png" alt="マイクに向かってポッドキャストを配信しているキャラクター" />
+            <img
+              loading="lazy"
+              decoding="async"
+              src="assets/visuals-v2/podcast.webp"
+              alt="暗い背景に声の波紋が広がる、法話ポッドキャストの抽象アート"
+              width="1400"
+              height="788"
+            />
           </div>
           <div class="card-content">
-            <p>「AIで法話を作る」とはどういうことなのか。説明を読むよりも、まず実際に体験していただきたくて始めた<strong>音声番組</strong>です。</p>
-            <p>AIに台本を自動生成させたものではなく、AIとの対話から私の思考が整理され、湧き出てきた<strong>「私自身の言葉」による法話</strong>を配信しています。</p>
-            <p>通勤中や掃除の合間に、ぜひ耳から<strong>AI法話の仕上がりと温かさ</strong>を確かめてみてください。</p>
+            <p>
+              「AIで法話を作る」とはどういうことなのか。説明を読むよりも、まず実際に体験していただきたくて始めた<strong>音声番組</strong>です。
+            </p>
+            <details class="story-details">
+              <summary>詳しく読む <span aria-hidden="true">＋</span></summary>
+              <div>
+                <p>
+                  AIに台本を自動生成させたものではなく、AIとの対話からぼくの思考が整理され、湧き出てきた<strong>「ぼく自身の言葉」による法話</strong>を配信しています。
+                </p>
+                <p>
+                  通勤中や掃除の合間に、ぜひ耳から<strong>AI法話の仕上がりと温かさ</strong>を確かめてみてください。
+                </p>
+              </div>
+            </details>
           </div>
           <div class="card-footer">
-            <a href="https://open.spotify.com/show/7wmjpPbDNrY8p14s6OCBhP?si=dOve6xM8SOuJUyMiBr7v1g" target="_blank" class="btn btn-outline" style="width: 100%;">番組を聴く</a>
+            <a
+              href="https://open.spotify.com/show/7wmjpPbDNrY8p14s6OCBhP?si=dOve6xM8SOuJUyMiBr7v1g"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              style="width: 100%"
+              >番組を聴く</a
+            >
           </div>
         </article>
 
+        <!-- Podcast: official Spotify show description and episode themes checked 2026-09-15. -->
+        <article
+          class="nvidia-card story-card story-future"
+          id="temple-future-podcast"
+        >
+          <span class="badge-tag">Podcast / 寺院運営・AI活用</span>
+          <h3 class="card-title">お寺の未来チャンネル</h3>
+          <div class="card-image-wrap">
+            <img
+              loading="lazy"
+              decoding="async"
+              src="assets/visuals-v2/temple-future.webp"
+              alt="寺院建築と緑の設計線を重ねた、お寺の未来を考えるコラージュ"
+              width="1400"
+              height="788"
+            />
+          </div>
+          <div class="card-content">
+            <p>
+              これからのお寺を、どのように運営していくか。<strong>寺院運営と僧侶のためのAI活用</strong>を考える音声番組です。
+            </p>
+            <details class="story-details">
+              <summary>詳しく読む <span aria-hidden="true">＋</span></summary>
+              <div>
+                <p>
+                  お寺の財務や広報、日々の業務のデジタル化。身近な課題を入口に、AIの活かし方や、ポッドキャストによる発信を取り上げています。
+                </p>
+                <p>
+                  道具を導入する先にあるのは、<strong>時間を生み出し、お寺の活動につなげること</strong>。宗派を超えたコミュニティ「BUDDHAO」の話も交えながら、お寺のこれからを一緒に考えていきます。
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="card-footer">
+            <a
+              href="https://open.spotify.com/show/0340CLfUuYpPX0FNfHY3Dq?si=ebf174ec5eae400b"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              style="width: 100%"
+              >お寺の未来チャンネルを聴く</a
+            >
+          </div>
+        </article>
+
+        <section
+          class="youtube-section"
+          id="youtube"
+          aria-labelledby="youtube-title"
+        >
+          <a
+            class="youtube-visual"
+            href="https://www.youtube.com/@yoshibows"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTubeでお寺の未来チャンネルの動画を見る（新しいタブで開きます）"
+          >
+            <span class="youtube-visual-top"
+              >YOSHIBOW / VIDEO CHANNEL <span aria-hidden="true">↗</span></span
+            >
+            <span class="youtube-visual-title"
+              >お寺の未来を、<br />映像でも。</span
+            >
+            <span class="youtube-play" aria-hidden="true"
+              ><svg viewBox="0 0 24 24" width="26" height="26">
+                <path d="M8 5v14l11-7z" fill="currentColor" /></svg
+            ></span>
+            <span class="youtube-visual-bottom"
+              >VOICE BY YOSHIBOW <span>VISUALS WITH AI</span></span
+            >
+          </a>
+          <div class="youtube-copy">
+            <span class="eyebrow">03 — FILMS</span>
+            <h3 id="youtube-title">
+              お寺の未来チャンネル<span>ポッドキャストの動画版</span>
+            </h3>
+            <p>寺院運営やAI活用の話を、映像でもお届けしています。</p>
+            <p>
+              音声はぼく自身の声。<strong
+                >音声以外は、すべてAIを活用して制作しています。</strong
+              >
+            </p>
+            <p>
+              話の内容とあわせて、AIでどのような動画を作れるのかも、ぜひご覧ください。
+            </p>
+            <a
+              class="btn btn-primary"
+              href="https://www.youtube.com/@yoshibows"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTubeで動画を見る <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </section>
+
         <!-- Item 4: 仏教コラム -->
-        <article class="nvidia-card">
-          <div class="corner-square"></div>
+        <article class="nvidia-card story-card story-column">
           <span class="badge-tag">Column</span>
           <h3 class="card-title">現役僧侶の仏教コラム</h3>
           <div class="card-image-wrap">
-            <img src="buddhism-column.jpg" alt="現役僧侶の仏教コラム" />
+            <img
+              loading="lazy"
+              decoding="async"
+              src="assets/visuals-v2/column.webp"
+              alt="障子越しの光と苔庭を望む、静かな寺院の廊下のイメージ"
+              width="1400"
+              height="788"
+            />
           </div>
           <div class="card-content">
-            <p><strong>ポッドキャストの文字起こしをメルマガ形式で配信</strong>しています。</p>
-            <p>毎朝6時に、<strong>ほんの少し楽に生きるヒント</strong>をお届け！</p>
-            <p>ポッドキャストのリンクも添えています。</p>
-            <p><strong>現在200名近くの方が購読中！</strong></p>
-            <p>ぜひ、気楽に登録してみてくださいね。</p>
+            <p>
+              <strong>ポッドキャストの文字起こしをメルマガ形式で配信</strong
+              >しています。
+            </p>
+            <details class="story-details">
+              <summary>詳しく読む <span aria-hidden="true">＋</span></summary>
+              <div>
+                <p>
+                  毎朝6時に、<strong>ほんの少し楽に生きるヒント</strong>をお届け！
+                </p>
+                <p>ポッドキャストのリンクも添えています。</p>
+                <p><strong>現在200名近くの方が購読中！</strong></p>
+                <p>ぜひ、気楽に登録してみてくださいね。</p>
+              </div>
+            </details>
           </div>
           <div class="card-footer">
-            <a href="https://substack.com/@yoshibow?r=tn6fm&utm_campaign=profile&utm_medium=profile-page" target="_blank" class="btn btn-outline" style="width: 100%;">無料でコラムを受け取る</a>
+            <a
+              href="https://substack.com/@yoshibow?r=tn6fm&utm_campaign=profile&utm_medium=profile-page"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              style="width: 100%"
+              >無料でコラムを受け取る</a
+            >
           </div>
         </article>
       </div>
     </main>
 
-    <!-- Footer Section (Black Canvas) -->
-    <footer class="site-footer reveal-up" style="--delay: 0.2s">
+    <section
+      class="apps-section container"
+      id="apps"
+      aria-labelledby="apps-title"
+    >
+      <div class="apps-heading">
+        <div>
+          <span class="eyebrow">04 — APPS BY YOSHIBOW</span>
+          <h2 id="apps-title">学びと実践を、<br />手のひらに。</h2>
+        </div>
+        <div>
+          <p>
+            仏教を学ぶ時間から、こころを整えるひととき、寺院の日々の実務まで。<br />App
+            Storeで公開している4つのアプリをご紹介します。
+          </p>
+        </div>
+      </div>
+      <div class="apps-showcase">
+        <div class="app-selectors" aria-label="紹介するアプリを選択"></div>
+        <div class="apps-grid">
+          <article class="app-card">
+            <div class="app-identity">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/1b/39/e5/1b39e518-f154-e7b8-c39b-01252e25b268/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg"
+                alt="21日で学ぶ歎異抄のアプリアイコン"
+                width="80"
+                height="80"
+              />
+              <div>
+                <span class="app-kicker">LEARN / 仏教を学ぶ</span>
+                <h3>21日で学ぶ歎異抄</h3>
+                <span class="app-device">iPhone・iPad</span>
+              </div>
+            </div>
+            <h4>一日一条、歎異抄を読み進める。</h4>
+            <p>
+              歎異抄（たんにしょう）を初めて読む方に向けた学習アプリです。原文とやさしい解説、図解、確認クイズを通して、21日間で少しずつ理解を深めていきます。
+            </p>
+            <p class="app-features">
+              ふりがな・用語解説 / 確認クイズ / 振り返りメモ
+            </p>
+            <a
+              class="btn btn-outline"
+              href="https://apps.apple.com/jp/app/id6788531768"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="21日で学ぶ歎異抄をApp Storeで見る（新しいタブで開きます）"
+              >App Storeで見る</a
+            >
+          </article>
+          <article class="app-card">
+            <div class="app-identity">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a5/58/b3/a558b3f0-a8de-4348-6de3-dc1a5a1fa184/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg"
+                alt="初学者のための、30日で学ぶ教行信証のアプリアイコン"
+                width="80"
+                height="80"
+              />
+              <div>
+                <span class="app-kicker">LEARN / 仏教を学ぶ</span>
+                <h3>初学者のための、30日で学ぶ教行信証</h3>
+                <span class="app-device">iPhone・iPad</span>
+              </div>
+            </div>
+            <h4>一日約10分、教行信証の全体像へ。</h4>
+            <p>
+              親鸞聖人の主著『教行信証（きょうぎょうしんしょう）』を、30の講義で学ぶアプリです。各巻の要点とつながりを、初学者向けの解説や図解で読み解きます。クイズと修了試験で、理解を確かめられます。
+            </p>
+            <p class="app-features">全30講義 / 図解・用語解説 / 学習記録</p>
+            <a
+              class="btn btn-outline"
+              href="https://apps.apple.com/jp/app/id6792495601"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="初学者のための、30日で学ぶ教行信証をApp Storeで見る（新しいタブで開きます）"
+              >App Storeで見る</a
+            >
+          </article>
+          <article class="app-card">
+            <div class="app-identity">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9d/ac/c3/9dacc3a6-3ade-1e05-bc15-8ace7bbb73ff/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg"
+                alt="orinのアプリアイコン"
+                width="80"
+                height="80"
+              />
+              <div>
+                <span class="app-kicker">PAUSE / こころを整える</span>
+                <h3>orin</h3>
+                <span class="app-device">iPhone・Apple Watch</span>
+              </div>
+            </div>
+            <h4>ひとつの音から、静かな時間を。</h4>
+            <p>
+              画面のお鈴をタップすると、澄んだ音色が響きます。叩く位置によって音の強さが変わり、Apple
+              WatchではDigital
+              Crownで音量を調整できます。読経や瞑想、写経などの時間にお使いください。
+            </p>
+            <p class="app-features">
+              オフライン対応 / 広告・課金なし / Apple Watch対応
+            </p>
+            <a
+              class="btn btn-outline"
+              href="https://apps.apple.com/jp/app/id6789988701"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="orinをApp Storeで見る（新しいタブで開きます）"
+              >App Storeで見る</a
+            >
+          </article>
+          <article class="app-card">
+            <div class="app-identity">
+              <img
+                loading="lazy"
+                decoding="async"
+                src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/76/53/f8/7653f8e8-ba63-7ffb-68c1-9c7cd3b6358f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg"
+                alt="中陰表・年忌表作成のアプリアイコン"
+                width="80"
+                height="80"
+              />
+              <div>
+                <span class="app-kicker">TOOLS / 寺院の実務に</span>
+                <h3>中陰表・年忌表作成</h3>
+                <span class="app-device">iPhone・iPad</span>
+              </div>
+            </div>
+            <h4>法要の日程を、手元で帳票に。</h4>
+            <p>
+              命日などの情報を入力すると、中陰表と年忌表の日程を自動計算するアプリです。PDFで確認し、AirPrintでそのまま印刷できます。寺院情報は端末に保存し、故人情報は保存しない設計です。
+            </p>
+            <p class="app-features">日程の自動計算 / PDF出力 / AirPrint印刷</p>
+            <a
+              class="btn btn-outline"
+              href="https://apps.apple.com/jp/app/id6788639052"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="中陰表・年忌表作成をApp Storeで見る（新しいタブで開きます）"
+              >App Storeで見る</a
+            >
+          </article>
+        </div>
+      </div>
+      <p class="apps-note">
+        掲載情報は2026年9月15日時点。価格・対応OSなどの最新情報は、各アプリのApp
+        Storeページでご確認ください。
+      </p>
+    </section>
+
+    <footer class="site-footer">
       <div class="footer-content">
-        <nav class="footer-nav" aria-label="フッターナビゲーション">
-          <a href="/chuin-privacy">プライバシーポリシー</a>
-          <a href="/contact">お問い合わせ</a>
-        </nav>
-        <div style="font-size: 13px; letter-spacing: 0.05em;">&copy; 2024 KOKORO TERASU Project</div>
+        <div class="footer-menu-layout">
+          <div class="footer-brand">
+            <a class="wordmark" href="#" aria-label="Yoshibow トップへ"
+              >yoshibow<span class="brand-dot">.</span></a
+            >
+            <p class="footer-message">仏教の智慧と、AIの可能性を。</p>
+          </div>
+          <nav class="footer-menu" aria-label="サイト内メニュー">
+            <h2>サイトメニュー</h2>
+            <a href="#about">プロフィール</a>
+            <a href="#community">コミュニティ</a>
+            <a href="#contents">コンテンツ・ポッドキャスト</a>
+            <a href="#youtube">YouTube</a>
+            <a href="#apps">アプリ</a>
+          </nav>
+          <nav class="footer-menu" aria-label="SNS・外部サービス">
+            <h2>SNS・配信</h2>
+            <a
+              href="https://x.com/chad78xx"
+              target="_blank"
+              rel="noopener noreferrer"
+              >X</a
+            >
+            <a
+              href="https://www.threads.com/@yoshi_bows"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Threads</a
+            >
+            <a
+              href="https://www.youtube.com/@yoshibows"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube</a
+            >
+            <a
+              href="https://open.spotify.com/show/7wmjpPbDNrY8p14s6OCBhP"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Spotify</a
+            >
+            <a
+              href="https://substack.com/@yoshibow"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Substack</a
+            >
+          </nav>
+          <nav class="footer-menu" aria-label="お問い合わせ・ポリシー">
+            <h2>お問い合わせ</h2>
+            <a href="/contact">お問い合わせフォーム</a>
+            <a href="/chuin-privacy">プライバシーポリシー</a>
+          </nav>
+        </div>
+        <div class="footer-bottom">
+          <small>&copy; 2024 KOKORO TERASU Project</small
+          ><a href="#">ページの先頭へ ↑</a>
+        </div>
       </div>
     </footer>
-
-    <script>
-      // Scroll Reveal Animation (Intersection Observer)
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
-      
-      document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
-    </script>
   </body>
 </html>

@@ -1,0 +1,237 @@
+import { createMotionController } from "./motion.js";
+import { initEnso } from "./enso.js";
+
+const root = document.body;
+root.classList.add("interactive");
+const motion = createMotionController(
+  root,
+  document.querySelector(".motion-toggle"),
+);
+initMenu();
+initApps(motion);
+initReveals(motion);
+initProgress();
+initImageDepth(motion);
+initEnso(root, motion);
+
+function initMenu() {
+  const menu = document.querySelector(".menu-toggle");
+  const closeMenu = () => {
+    root.classList.remove("menu-open");
+    menu.setAttribute("aria-expanded", "false");
+  };
+  menu.addEventListener("click", () => {
+    const open = root.classList.toggle("menu-open");
+    menu.setAttribute("aria-expanded", String(open));
+  });
+  document
+    .querySelectorAll("#site-menu a")
+    .forEach((a) => a.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && root.classList.contains("menu-open")) {
+      closeMenu();
+      menu.focus();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".main-nav")) closeMenu();
+  });
+}
+
+function initApps(motion) {
+  // Preserve the complete four-app catalog when JavaScript is unavailable.
+  const appCards = [...document.querySelectorAll(".app-card")];
+  const selectorHost = document.querySelector(".app-selectors");
+  const selectors = appCards.map((card, i) => {
+    card.id = `app-panel-${i}`;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "app-selector";
+    button.setAttribute("aria-controls", card.id);
+    button.setAttribute("aria-pressed", String(i === 0));
+    const image = card.querySelector("img").cloneNode();
+    image.alt = "";
+    const title = document.createElement("span");
+    title.textContent = card.querySelector("h3").textContent;
+    const arrow = document.createElement("i");
+    arrow.textContent = "↗";
+    arrow.setAttribute("aria-hidden", "true");
+    button.append(image, title, arrow);
+    button.addEventListener("click", () => {
+      appCards.forEach((panel, n) => {
+        panel.hidden = n !== i;
+        selectors[n].setAttribute("aria-pressed", String(n === i));
+      });
+      if (!motion.paused && !motion.prefersReducedMotion)
+        card.animate(
+          [
+            { opacity: 0.3, transform: "translateY(8px)" },
+            { opacity: 1, transform: "translateY(0)" },
+          ],
+          { duration: 250, easing: "ease-out" },
+        );
+    });
+    selectorHost.append(button);
+    card.hidden = i !== 0;
+    return button;
+  });
+  root.classList.add("apps-enhanced");
+  selectorHost.addEventListener("keydown", (e) => {
+    const i = selectors.indexOf(document.activeElement);
+    if (i < 0) return;
+    let next;
+    if (["ArrowRight", "ArrowDown"].includes(e.key))
+      next = (i + 1) % selectors.length;
+    if (["ArrowLeft", "ArrowUp"].includes(e.key))
+      next = (i + selectors.length - 1) % selectors.length;
+    if (e.key === "Home") next = 0;
+    if (e.key === "End") next = selectors.length - 1;
+    if (next !== undefined) {
+      e.preventDefault();
+      selectors[next].focus();
+      selectors[next].click();
+    }
+  });
+}
+
+function initReveals(motion) {
+  // One-time entrances; content remains visible if motion is reduced or paused.
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.remove("reveal-pending");
+            revealObserver.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.05 },
+    );
+    document
+      .querySelectorAll(
+        ".section-intro,.story-card,.youtube-section,.apps-heading,.profile-statement,.featured>.card-image-wrap,.community-overview,.footer-menu",
+      )
+      .forEach((el) => {
+        el.dataset.reveal = "";
+        if (!motion.paused && el.getBoundingClientRect().top > innerHeight)
+          el.classList.add("reveal-pending");
+        revealObserver.observe(el);
+      });
+  }
+  motion.onChange(() => {
+    if (motion.paused)
+      document
+        .querySelectorAll(".reveal-pending")
+        .forEach((el) => el.classList.remove("reveal-pending"));
+  });
+  // Alternate media entrances in document order, with a small stagger for pairs.
+  const mediaFrames = [
+    ...document.querySelectorAll(
+      ".featured > .card-image-wrap, .story-card .card-image-wrap, .youtube-visual",
+    ),
+  ];
+  const directions = ["top", "bottom", "left", "right"];
+  if ("IntersectionObserver" in window) {
+    const mediaObserver = new IntersectionObserver(
+      (entries) => {
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .map((entry) => ({
+            observed: entry.target,
+            target: entry.target.matches(".youtube-section")
+              ? entry.target.querySelector(".youtube-visual")
+              : entry.target,
+          }))
+          .sort(
+            (a, b) =>
+              mediaFrames.indexOf(a.target) - mediaFrames.indexOf(b.target),
+          )
+          .forEach((entry, index) => {
+            entry.target.style.setProperty(
+              "--media-delay",
+              `${Math.min(index, 2) * 120}ms`,
+            );
+            entry.target.classList.remove("media-pending");
+            mediaObserver.unobserve(entry.observed);
+          });
+      },
+      { threshold: 0.12 },
+    );
+    mediaFrames.forEach((el, index) => {
+      el.dataset.mediaDirection = directions[index % directions.length];
+      if (!motion.paused && el.getBoundingClientRect().top >= innerHeight)
+        el.classList.add("media-pending");
+      mediaObserver.observe(
+        el.matches(".youtube-visual") ? el.closest(".youtube-section") : el,
+      );
+    });
+    const showMedia = () => {
+      if (motion.paused)
+        mediaFrames.forEach((el) => {
+          el.classList.remove("media-pending");
+          el.style.setProperty("--media-delay", "0ms");
+        });
+    };
+    motion.onChange(showMedia);
+  }
+}
+
+function initProgress() {
+  let scrollQueued = false;
+  const progress = document.querySelector(".reading-progress");
+  addEventListener(
+    "scroll",
+    () => {
+      if (scrollQueued) return;
+      scrollQueued = true;
+      requestAnimationFrame(() => {
+        const distance = document.documentElement.scrollHeight - innerHeight;
+        progress.style.transform = `scaleX(${distance > 0 ? scrollY / distance : 0})`;
+        scrollQueued = false;
+      });
+    },
+    { passive: true },
+  );
+}
+
+function initImageDepth(motion) {
+  // Small, pointer-following depth confined to editorial images.
+  // Touch and reduced-motion users retain a stable, fully visible image.
+  const finePointer = matchMedia("(hover: hover) and (pointer: fine)");
+  const imageFrames = [
+    ...document.querySelectorAll(".story-card .card-image-wrap"),
+  ];
+  imageFrames.forEach((el) => {
+    let queued = 0,
+      px = 0,
+      py = 0;
+    const reset = () => {
+      el.style.removeProperty("--image-x");
+      el.style.removeProperty("--image-y");
+    };
+    el.addEventListener(
+      "pointermove",
+      (e) => {
+        if (motion.paused || !finePointer.matches || e.pointerType === "touch")
+          return;
+        const box = el.getBoundingClientRect();
+        px = ((e.clientX - box.left) / box.width - 0.5) * 8;
+        py = ((e.clientY - box.top) / box.height - 0.5) * 8;
+        if (!queued)
+          queued = requestAnimationFrame(() => {
+            queued = 0;
+            if (motion.paused || !finePointer.matches) return;
+            el.style.setProperty("--image-x", `${px}px`);
+            el.style.setProperty("--image-y", `${py}px`);
+          });
+      },
+      { passive: true },
+    );
+    el.addEventListener("pointerleave", () => {
+      if (queued) cancelAnimationFrame(queued);
+      queued = 0;
+      reset();
+    });
+    motion.onChange(reset);
+  });
+}

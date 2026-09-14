@@ -1,0 +1,16 @@
+{
+  "name": "yoshibow_plofile",
+  "version": "1.0.0",
+  "devDependencies": {
+    "playwright": "^1.63.0",
+    "prettier": "^3.9.6"
+  },
+  "private": true,
+  "description": "Yoshibow profile website",
+  "scripts": {
+    "dev": "node tests/server.mjs",
+    "test": "node tests/site.mjs",
+    "format": "prettier --write index.html styles/*.css scripts/*.js tests/*.mjs README.md",
+    "format:check": "prettier --check index.html styles/*.css scripts/*.js tests/*.mjs README.md"
+  }
+}

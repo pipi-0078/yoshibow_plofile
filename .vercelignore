@@ -1,0 +1,12 @@
+.git
+.agents
+skills
+nvidia
+stripe
+docs
+tests
+test-results
+node_modules
+assets/visuals-v2/*.png
+assets/visuals-v2/generation.json
+README.md
