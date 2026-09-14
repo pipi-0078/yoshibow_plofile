@@ -64,6 +64,29 @@ try {
       [],
       "All icons and images load",
     );
+    if (width > 700) {
+      const frames = await page
+        .locator(
+          ".featured > .card-image-wrap, .story-card .card-image-wrap, .youtube-visual",
+        )
+        .evaluateAll((elements) =>
+          elements.map((el) => ({
+            width: el.getBoundingClientRect().width,
+            height: el.getBoundingClientRect().height,
+          })),
+        );
+      assert.equal(frames.length, 7);
+      for (const frame of frames) {
+        assert(
+          Math.abs(frame.width - frames[0].width) < 1,
+          `Media widths match at ${width}px: ${JSON.stringify(frames)}`,
+        );
+        assert(
+          Math.abs(frame.width / frame.height - 16 / 9) < 0.01,
+          "Media uses 16:9",
+        );
+      }
+    }
     for (let i = 0; i < 4; i++) {
       await page.locator(".app-selector").nth(i).click();
       assert.equal(await page.locator(".app-card:visible").count(), 1);

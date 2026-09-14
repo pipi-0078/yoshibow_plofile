@@ -2547,3 +2547,39 @@ html:has(.experience.motion-paused) {
     clip-path: none;
   }
 }
+
+/* Shared desktop media frame across community, articles, audio and video. */
+@media (min-width: 701px) {
+  .experience .featured,
+  .experience .youtube-section,
+  .experience .story-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+  }
+  .experience .story-newsletter,
+  .experience .story-textbook {
+    grid-column: span 6;
+    padding-top: 0 !important;
+  }
+  .experience .featured > .card-image-wrap,
+  .experience .card-grid .story-card .card-image-wrap,
+  .experience .youtube-visual {
+    aspect-ratio: 16 / 9 !important;
+    border-radius: 8px;
+  }
+  .experience .story-podcast .card-image-wrap,
+  .experience .story-future .card-image-wrap {
+    width: calc(100% + 48px);
+    margin-top: -24px;
+    margin-left: -24px;
+    margin-right: -24px;
+    border-radius: 12px 12px 0 0 !important;
+  }
+  .experience .featured > .card-image-wrap img,
+  .experience .story-card .card-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
