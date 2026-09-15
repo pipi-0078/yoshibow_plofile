@@ -174,6 +174,40 @@ try {
       `PASS ${width}px: images, entrances, app selection, keyboard, disclosure, menu, pause`,
     );
   }
+  const touchPage = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+  });
+  await touchPage.goto(base);
+  await touchPage.waitForSelector(".apps-enhanced");
+  const touchImage = touchPage.locator(".story-card .card-image-wrap").first();
+  await touchImage.scrollIntoViewIfNeeded();
+  await touchPage.waitForTimeout(300);
+  const before = await touchImage.evaluate((el) =>
+    el.style.getPropertyValue("--touch-depth"),
+  );
+  assert.notEqual(before, "", "Touch scroll effect is active");
+  await touchPage.evaluate(() => scrollBy({ top: 100, behavior: "instant" }));
+  await touchPage.waitForTimeout(300);
+  assert.notEqual(
+    await touchImage.evaluate((el) =>
+      el.style.getPropertyValue("--touch-depth"),
+    ),
+    before,
+    "Touch depth changes with scrolling",
+  );
+  await touchPage.emulateMedia({ reducedMotion: "reduce" });
+  await touchPage.waitForTimeout(100);
+  assert.equal(
+    await touchImage.evaluate((el) =>
+      el.style.getPropertyValue("--touch-depth"),
+    ),
+    "",
+    "Reduced motion clears touch depth",
+  );
+  await touchPage.close();
+  console.log("PASS touch-device scroll animation and reduced motion");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.reload();
   await page.waitForSelector(".apps-enhanced");

@@ -13,6 +13,7 @@ initReveals(motion);
 initProgress();
 initImageDepth(motion);
 initButtonResponse(motion);
+initTouchDepth(motion);
 initEnso(root, motion);
 
 function initMenu() {
@@ -286,4 +287,43 @@ function initButtonResponse(motion) {
     finePointer.addEventListener("change", reset);
     motion.onChange(reset);
   });
+}
+
+// Touch devices use scroll position instead of a mouse pointer.
+function initTouchDepth(motion) {
+  const touch = matchMedia("(hover: none) and (pointer: coarse)");
+  const frames = [
+    ...document.querySelectorAll(
+      ".featured > .card-image-wrap, .story-card .card-image-wrap",
+    ),
+  ];
+  let frame = 0;
+  function update() {
+    frame = 0;
+    frames.forEach((el) => {
+      if (!touch.matches || motion.paused || motion.prefersReducedMotion) {
+        el.style.removeProperty("--touch-depth");
+        return;
+      }
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > innerHeight) return;
+      const progress = Math.max(
+        -1,
+        Math.min(
+          1,
+          (innerHeight / 2 - rect.top - rect.height / 2) /
+            (innerHeight / 2 + rect.height / 2),
+        ),
+      );
+      el.style.setProperty("--touch-depth", `${progress * 14}px`);
+    });
+  }
+  function schedule() {
+    if (!frame) frame = requestAnimationFrame(update);
+  }
+  addEventListener("scroll", schedule, { passive: true });
+  addEventListener("resize", schedule, { passive: true });
+  touch.addEventListener("change", schedule);
+  motion.onChange(schedule);
+  schedule();
 }
