@@ -16,6 +16,7 @@ initButtonResponse(motion);
 initTouchDepth(motion);
 initTouchEntrances(motion);
 initEnso(root, motion);
+initMotionIndicator(motion);
 
 function initMenu() {
   const menu = document.querySelector(".menu-toggle");
@@ -374,4 +375,27 @@ function initTouchEntrances(motion) {
     .forEach((el) => observer.observe(el));
   motion.onChange(() => visible.forEach(play));
   touch.addEventListener("change", () => visible.forEach(play));
+}
+
+function initMotionIndicator(motion) {
+  const dot = document.querySelector(".status-dot");
+  let animation;
+  function update() {
+    animation?.cancel();
+    if (motion.paused) return;
+    animation = dot.animate(
+      [
+        { transform: "scale(1)", boxShadow: "0 0 0 0px #a6e44480" },
+        {
+          transform: "scale(1.25)",
+          boxShadow: "0 0 0 12px #a6e44400",
+          offset: 0.7,
+        },
+        { transform: "scale(1)", boxShadow: "0 0 0 0px #a6e44400" },
+      ],
+      { duration: 2200, iterations: Infinity },
+    );
+  }
+  motion.onChange(update);
+  update();
 }

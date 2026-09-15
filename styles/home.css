@@ -49,7 +49,7 @@ html {
   z-index: 3;
 }
 .wordmark {
-  font-size: 27px;
+  font-size: 30.2px;
   font-weight: 800;
   letter-spacing: -1.4px;
   text-decoration: none;
@@ -65,7 +65,7 @@ html {
   width: 35px;
   height: 35px;
   text-align: center;
-  font-size: 26px;
+  font-size: 29.1px;
   line-height: 31px;
   margin-right: 4px;
 }
@@ -78,7 +78,7 @@ html {
   gap: 30px;
 }
 .main-nav a:not(.wordmark) {
-  font-size: 13px;
+  font-size: 14.6px;
   font-weight: 600;
   color: #293128;
   text-decoration: none;
@@ -137,7 +137,7 @@ html {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 10px !important;
+  font-size: 12px !important;
   letter-spacing: 1.65px !important;
   color: #3f601d !important;
   margin-bottom: 24px !important;
@@ -161,18 +161,18 @@ html {
   color: #477514;
 }
 .hero-byline {
-  font-size: 18px;
+  font-size: 20.2px;
   font-weight: 600;
   margin-bottom: 14px;
 }
 .hero-byline span {
-  font-size: 12px;
+  font-size: 13.4px;
   font-weight: 400;
   margin-left: 10px;
   color: #4e5e43;
 }
 .stripe-home .hero-description {
-  font-size: 13px;
+  font-size: 14.6px;
   line-height: 1.95;
   color: #4c5948;
   max-width: 510px;
@@ -189,7 +189,7 @@ html {
   height: auto;
   min-height: 44px;
   border-radius: 99px;
-  font-size: 13px;
+  font-size: 14.6px;
   font-weight: 600;
   padding: 12px 21px;
   gap: 16px;
@@ -233,7 +233,7 @@ html {
   border: 0;
   color: #4c5948;
   background: transparent;
-  font-size: 17px;
+  font-size: 19px;
 }
 .stripe-home .social-links a:hover {
   color: #2c4b12;
@@ -261,12 +261,12 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 10px;
+  font-size: 12px;
   color: #627257;
   padding: 0 3px 14px;
 }
 .portrait-top > span:last-child {
-  font-size: 25px;
+  font-size: 28px;
   color: #76b900;
 }
 .stripe-home .profile-avatar-wrap {
@@ -288,19 +288,19 @@ html {
   padding: 20px 6px 4px;
 }
 .portrait-bottom > span:first-child {
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 2px;
   color: #526449;
 }
 .portrait-bottom strong {
   display: block;
-  font-size: 21px;
+  font-size: 23.5px;
   letter-spacing: 1px;
   color: #1d2917;
   margin-top: 4px;
 }
 .portrait-tag {
-  font-size: 9px;
+  font-size: 12px;
   border: 1px solid #dce5d7;
   border-radius: 20px;
   padding: 7px 10px;
@@ -330,26 +330,26 @@ html {
 }
 .floating-card small {
   display: block;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 1.5px;
   font-style: normal;
   margin-bottom: 5px;
 }
 .floating-card strong {
   display: block;
-  font-size: 19px;
+  font-size: 21.3px;
   font-weight: 600;
   letter-spacing: 0.4px;
 }
 .floating-card em {
   display: block;
   font-style: normal;
-  font-size: 10px;
+  font-size: 12px;
   color: #b8c7af;
   margin-top: 6px;
 }
 .mini-icon {
-  font-size: 30px;
+  font-size: 33.6px;
   color: #a6de54;
 }
 .float-learning {
@@ -361,7 +361,7 @@ html {
   padding: 18px;
 }
 .float-learning strong {
-  font-size: 13px;
+  font-size: 14.6px;
 }
 .float-learning small {
   color: #647858;
@@ -390,14 +390,14 @@ html {
   gap: 20px;
 }
 .topic-strip span {
-  font-size: 12px;
+  font-size: 13.4px;
   font-weight: 700;
   letter-spacing: 1.7px;
   color: #3b4c31;
 }
 .topic-strip i {
   font-style: normal;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   color: #687561;
   letter-spacing: 0;
@@ -405,7 +405,7 @@ html {
 }
 .topic-strip .strip-plus {
   color: #76b900;
-  font-size: 19px;
+  font-size: 21.3px;
   font-weight: 300;
 }
 .stripe-home .body-section {
@@ -417,7 +417,7 @@ html {
   margin-bottom: 48px;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.8px;
   color: #426a00;
@@ -425,7 +425,7 @@ html {
   margin-bottom: 18px;
 }
 .stripe-home .section-headline {
-  font-size: 38px;
+  font-size: 42.6px;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -1.2px;
@@ -435,7 +435,7 @@ html {
   position: absolute;
   right: 20px;
   bottom: 6px;
-  font-size: 13px;
+  font-size: 14.6px;
   color: #66705f;
   line-height: 1.9;
 }
@@ -460,7 +460,7 @@ html {
   justify-self: start;
 }
 .stripe-home .badge-tag {
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 1.5px;
   background: transparent;
   color: #426a00;
@@ -469,7 +469,7 @@ html {
 }
 .featured > .card-title {
   grid-column: 1/-1;
-  font-size: 20px !important;
+  font-size: 22.4px !important;
   font-weight: 500;
   margin-bottom: 28px !important;
 }
@@ -488,25 +488,25 @@ html {
   padding-bottom: 26px;
 }
 .community-name {
-  font-size: 42px;
+  font-size: 47px;
   font-weight: 800;
   letter-spacing: -2px;
   color: #1b2e12;
 }
 .community-name > span {
-  font-size: 15px;
+  font-size: 16.8px;
   vertical-align: top;
   letter-spacing: 0;
 }
 .community-overview > p {
-  font-size: 13px;
+  font-size: 14.6px;
   line-height: 1.9;
   color: #58654f;
   margin: 14px 0 20px;
 }
 .community-note {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: #637457;
   margin-top: 12px;
 }
@@ -517,7 +517,7 @@ html {
 .community-details summary {
   padding: 19px 0;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14.6px;
   font-weight: 500;
   list-style: none;
   display: flex;
@@ -528,14 +528,14 @@ html {
   display: none;
 }
 .community-details summary > span {
-  font-size: 18px;
+  font-size: 20.2px;
   color: #426a00;
 }
 .community-details[open] summary > span {
   transform: rotate(45deg);
 }
 .stripe-home .featured .card-content {
-  font-size: 14px;
+  font-size: 15.7px;
   line-height: 1.9;
 }
 .community-details > div[style] {
@@ -544,18 +544,18 @@ html {
   border: 0 !important;
 }
 .community-details h4 {
-  font-size: 18px !important;
+  font-size: 20.2px !important;
 }
 .stripe-home .editorial-callout {
   background: #edf4df;
-  font-size: 12px;
+  font-size: 13.4px;
   font-weight: 400;
   border-left: 2px solid #76b900;
   border-radius: 4px;
   padding: 14px;
 }
 .stripe-home .featured .vip-benefit-list {
-  font-size: 14px;
+  font-size: 15.7px;
 }
 .stripe-home .card-price-badge {
   background: #e5edda;
@@ -571,12 +571,12 @@ html {
   margin-bottom: 32px;
 }
 .content-heading h2 {
-  font-size: 30px;
+  font-size: 33.6px;
   font-weight: 400;
   letter-spacing: -1px;
 }
 .content-heading p {
-  font-size: 12px;
+  font-size: 13.4px;
   color: #66705f;
   margin-bottom: 5px;
 }
@@ -599,7 +599,7 @@ html {
   box-shadow: 0 14px 32px #182a0c0c;
 }
 .stripe-home .card-grid .card-title {
-  font-size: 20px;
+  font-size: 22.4px;
   font-weight: 500;
   line-height: 1.55;
   margin-bottom: 22px;
@@ -611,7 +611,7 @@ html {
   margin-bottom: 24px;
 }
 .stripe-home .card-content {
-  font-size: 13px;
+  font-size: 14.6px;
   line-height: 1.95;
   color: #586151;
 }
@@ -641,7 +641,7 @@ html {
   height: auto;
   display: block;
   background: none;
-  font-size: 20px;
+  font-size: 22.4px;
 }
 .stripe-home .btn-outline:hover {
   background: transparent;
@@ -661,11 +661,11 @@ html {
 }
 .site-footer .wordmark {
   color: white;
-  font-size: 30px;
+  font-size: 33.6px;
 }
 .footer-message {
   color: #b6c1af;
-  font-size: 13px;
+  font-size: 14.6px;
 }
 .stripe-home .footer-nav {
   position: absolute;
@@ -674,7 +674,7 @@ html {
   gap: 25px;
 }
 .stripe-home .footer-nav a {
-  font-size: 12px;
+  font-size: 13.4px;
   font-weight: 400;
   color: #b6c1af;
 }
@@ -684,7 +684,7 @@ html {
   width: 100%;
   text-align: left;
   color: #86957d;
-  font-size: 10px !important;
+  font-size: 12px !important;
 }
 .stripe-home .reveal-up {
   opacity: 1;
@@ -705,7 +705,7 @@ html {
 }
 @media (min-width: 1440px) {
   .stripe-home .hero-title {
-    font-size: 62px;
+    font-size: 69.4px;
   }
 }
 @media (max-width: 1000px) {
@@ -728,7 +728,7 @@ html {
   }
   .stripe-home .hero-cta .btn {
     width: auto;
-    font-size: 11px;
+    font-size: 12.3px;
   }
   .stripe-home .social-links {
     justify-content: flex-start;
@@ -751,10 +751,10 @@ html {
     bottom: 18px;
   }
   .floating-card strong {
-    font-size: 16px;
+    font-size: 17.9px;
   }
   .float-learning strong {
-    font-size: 11px;
+    font-size: 12.3px;
   }
   .orbit {
     width: 340px;
@@ -773,7 +773,7 @@ html {
     padding: 28px !important;
   }
   .community-name {
-    font-size: 34px;
+    font-size: 38.1px;
   }
   .desktop-break {
     display: none;
@@ -782,7 +782,7 @@ html {
     right: 0;
   }
   .stripe-home .hero-description {
-    font-size: 12px;
+    font-size: 13.4px;
   }
 }
 @media (max-width: 700px) {
@@ -791,19 +791,19 @@ html {
     gap: 12px;
   }
   .wordmark {
-    font-size: 24px;
+    font-size: 26.9px;
   }
   .brand-symbol {
     width: 29px;
     height: 29px;
-    font-size: 22px;
+    font-size: 24.6px;
     line-height: 27px;
   }
   .nav-links {
     display: none;
   }
   .main-nav .nav-contact {
-    font-size: 11px !important;
+    font-size: 12.3px !important;
     padding: 10px 13px;
   }
   .nav-contact span {
@@ -833,26 +833,26 @@ html {
     line-height: 1.4;
   }
   .hero-subtitle {
-    font-size: 8px !important;
+    font-size: 12px !important;
     letter-spacing: 1.3px !important;
     margin-bottom: 20px !important;
   }
   .hero-byline {
-    font-size: 17px;
+    font-size: 19px;
   }
   .hero-byline span {
-    font-size: 10px;
+    font-size: 12px;
     margin-left: 3px;
   }
   .stripe-home .hero-description {
-    font-size: 12px;
+    font-size: 13.4px;
     max-width: none;
   }
   .stripe-home .hero-cta {
     gap: 16px;
   }
   .stripe-home .hero-cta .btn {
-    font-size: 11px;
+    font-size: 12.3px;
   }
   .stripe-home .social-links {
     margin-top: 20px;
@@ -890,14 +890,14 @@ html {
     gap: 8px;
   }
   .topic-strip span {
-    font-size: 8px;
+    font-size: 12px;
     letter-spacing: 0.7px;
   }
   .topic-strip i {
-    font-size: 8px;
+    font-size: 12px;
   }
   .topic-strip .strip-plus {
-    font-size: 14px;
+    font-size: 15.7px;
   }
   .stripe-home .body-section {
     padding-top: 58px;
@@ -907,15 +907,15 @@ html {
     margin-bottom: 28px;
   }
   .stripe-home .section-headline {
-    font-size: 30px;
+    font-size: 33.6px;
   }
   .section-intro > p {
     position: static;
     margin-top: 20px;
-    font-size: 12px;
+    font-size: 13.4px;
   }
   .eyebrow {
-    font-size: 9px;
+    font-size: 12px;
     margin-bottom: 12px;
   }
   .stripe-home .featured {
@@ -925,26 +925,26 @@ html {
     margin-bottom: 56px !important;
   }
   .stripe-home .featured > .card-title {
-    font-size: 19px !important;
+    font-size: 21.3px !important;
     line-height: 1.6;
   }
   .stripe-home .featured .mobile-only-title {
-    font-size: 19px !important;
+    font-size: 21.3px !important;
   }
   .community-overview {
     width: 100%;
   }
   .community-name {
-    font-size: 38px;
+    font-size: 42.6px;
   }
   .community-overview > p {
-    font-size: 12px;
+    font-size: 13.4px;
   }
   .community-details {
     width: 100%;
   }
   .community-details summary {
-    font-size: 11px;
+    font-size: 12.3px;
   }
   .stripe-home .featured-footer {
     flex-direction: column;
@@ -954,11 +954,11 @@ html {
     margin-bottom: 24px;
   }
   .content-heading h2 {
-    font-size: 26px;
+    font-size: 29.1px;
   }
   .content-heading p {
     margin-top: 14px;
-    font-size: 11px;
+    font-size: 12.3px;
   }
   .stripe-home .card-grid {
     grid-template-columns: 1fr;
@@ -968,7 +968,7 @@ html {
     padding: 22px;
   }
   .stripe-home .card-grid .card-title {
-    font-size: 19px;
+    font-size: 21.3px;
   }
   .stripe-home .site-footer {
     padding: 40px 24px;
@@ -978,7 +978,7 @@ html {
     gap: 20px;
   }
   .footer-message {
-    font-size: 12px;
+    font-size: 13.4px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1048,7 +1048,7 @@ html {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 1.3px;
   color: #b8c9ad;
 }
@@ -1081,20 +1081,20 @@ html {
   scale: 1.08;
 }
 .youtube-copy h3 {
-  font-size: 24px;
+  font-size: 26.9px;
   font-weight: 500;
   line-height: 1.6;
   margin-bottom: 18px;
 }
 .youtube-copy h3 span {
   display: block;
-  font-size: 12px;
+  font-size: 13.4px;
   font-weight: 400;
   color: #617055;
   margin-top: 5px;
 }
 .youtube-copy p {
-  font-size: 13px;
+  font-size: 14.6px;
   line-height: 1.95;
   color: #586151;
   margin-bottom: 12px;
@@ -1116,11 +1116,11 @@ html {
   }
   .youtube-visual-top,
   .youtube-visual-bottom {
-    font-size: 7px;
+    font-size: 12px;
     letter-spacing: 0.4px;
   }
   .youtube-visual-title {
-    font-size: 25px;
+    font-size: 28px;
   }
   .youtube-play {
     width: 42px;
@@ -1128,7 +1128,7 @@ html {
     right: 16px;
   }
   .youtube-copy h3 {
-    font-size: 20px;
+    font-size: 22.4px;
   }
 }
 @media (max-width: 700px) {
@@ -1159,13 +1159,13 @@ html {
   margin-bottom: 36px;
 }
 .apps-heading h2 {
-  font-size: 38px;
+  font-size: 42.6px;
   line-height: 1.5;
   letter-spacing: -1px;
   font-weight: 400;
 }
 .apps-heading p {
-  font-size: 13px;
+  font-size: 14.6px;
   line-height: 1.9;
   color: #586151;
   margin-top: 14px;
@@ -1176,7 +1176,7 @@ html {
   background: #edf4e2;
   color: #426a00;
   border-radius: 99px;
-  font-size: 12px;
+  font-size: 13.4px;
   font-weight: 600;
 }
 .apps-grid {
@@ -1208,35 +1208,35 @@ html {
   box-shadow: 0 4px 14px #17240c10;
 }
 .app-identity h3 {
-  font-size: 19px;
+  font-size: 21.3px;
   font-weight: 500;
   line-height: 1.6;
   margin: 5px 0;
   overflow-wrap: anywhere;
 }
 .app-kicker {
-  font-size: 9px;
+  font-size: 12px;
   color: #426a00;
   letter-spacing: 1px;
 }
 .app-device {
-  font-size: 11px;
+  font-size: 12.3px;
   color: #63705a;
 }
 .app-card h4 {
-  font-size: 16px;
+  font-size: 17.9px;
   font-weight: 500;
   line-height: 1.7;
   margin-bottom: 12px;
 }
 .app-card p {
-  font-size: 13px;
+  font-size: 14.6px;
   line-height: 1.95;
   color: #586151;
   margin-bottom: 18px;
 }
 .app-card .app-features {
-  font-size: 11px;
+  font-size: 12.3px;
   color: #426a00;
   margin-bottom: 24px;
 }
@@ -1246,7 +1246,7 @@ html {
   border-top: 1px solid #dde6d3;
 }
 .apps-note {
-  font-size: 11px;
+  font-size: 12.3px;
   line-height: 1.8;
   color: #63705a;
   margin-top: 24px;
@@ -1260,7 +1260,7 @@ html {
     gap: 20px;
   }
   .apps-heading h2 {
-    font-size: 30px;
+    font-size: 33.6px;
   }
   .apps-grid {
     grid-template-columns: 1fr;
@@ -1279,7 +1279,7 @@ html {
     border-radius: 14px;
   }
   .app-identity h3 {
-    font-size: 17px;
+    font-size: 19px;
   }
 }
 
@@ -1303,7 +1303,7 @@ html {
 }
 .experience .main-nav .wordmark {
   color: white;
-  font-size: 27px;
+  font-size: 30.2px;
 }
 .experience .brand-symbol {
   background: var(--accent);
@@ -1346,7 +1346,7 @@ html {
 }
 .experience .hero-subtitle {
   color: #b2c69b !important;
-  font-size: 10px !important;
+  font-size: 12px !important;
   letter-spacing: 2px !important;
   margin-bottom: 32px !important;
 }
@@ -1381,7 +1381,7 @@ html {
   padding-inline: 24px;
 }
 .hero-app-link {
-  font-size: 12px;
+  font-size: 13.4px;
   color: #d4dec9;
   text-decoration: none;
   display: flex;
@@ -1434,13 +1434,13 @@ html {
   border-radius: 50%;
 }
 .hero-signature strong {
-  font-size: 21px;
+  font-size: 23.5px;
   display: block;
   font-weight: 500;
 }
 .hero-signature span {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: #b5c5a6;
   margin-top: 6px;
 }
@@ -1455,7 +1455,7 @@ html {
   gap: 20px;
   border-top: 1px solid #b3d49425;
   padding-top: 22px;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 1.6px;
   color: #9dab92;
 }
@@ -1484,7 +1484,7 @@ html {
   padding-top: 12px;
 }
 .profile-statement > div > p {
-  font-size: 44px;
+  font-size: 49.3px;
   letter-spacing: -1.5px;
   line-height: 1.6;
   font-weight: 400;
@@ -1493,7 +1493,7 @@ html {
   color: #7b8571;
 }
 .profile-description {
-  font-size: 14px;
+  font-size: 15.7px;
   line-height: 2.1;
   max-width: 600px;
   margin-top: 28px;
@@ -1522,7 +1522,7 @@ html {
   padding-bottom: 80px;
 }
 .experience .section-headline {
-  font-size: 48px;
+  font-size: 53.8px;
   letter-spacing: -2px;
   line-height: 1.45;
 }
@@ -1530,7 +1530,7 @@ html {
   margin-bottom: 44px;
 }
 .experience .section-intro > p {
-  font-size: 14px;
+  font-size: 15.7px;
 }
 .experience .featured {
   background: transparent;
@@ -1566,7 +1566,7 @@ html {
   letter-spacing: -4px;
 }
 .experience .community-overview > p {
-  font-size: 15px;
+  font-size: 16.8px;
   line-height: 2;
   margin-bottom: 28px;
 }
@@ -1577,7 +1577,7 @@ html {
   padding: 22px 0;
 }
 .experience .content-heading h2 {
-  font-size: 42px;
+  font-size: 47px;
   letter-spacing: -1.8px;
 }
 .experience .content-heading {
@@ -1616,7 +1616,7 @@ html {
   aspect-ratio: 1.25;
 }
 .experience .card-grid .story-card .card-title {
-  font-size: 26px;
+  font-size: 29.1px;
   line-height: 1.55;
   letter-spacing: -0.5px;
   margin-bottom: 16px;
@@ -1624,7 +1624,7 @@ html {
 .experience .card-grid .story-card .card-content {
   margin-bottom: 12px;
   max-width: 600px;
-  font-size: 14px;
+  font-size: 15.7px;
   line-height: 1.9;
 }
 .story-details {
@@ -1637,7 +1637,7 @@ html {
   padding-block: 10px;
   color: #426a00;
   list-style: none;
-  font-size: 12px;
+  font-size: 13.4px;
 }
 .story-details summary::-webkit-details-marker {
   display: none;
@@ -1707,7 +1707,7 @@ html {
   padding: 32px;
 }
 .experience .youtube-visual-title {
-  font-size: 42px;
+  font-size: 47px;
 }
 .experience .youtube-visual::before {
   display: none;
@@ -1718,10 +1718,10 @@ html {
   right: 30px;
 }
 .experience .youtube-copy h3 {
-  font-size: 27px;
+  font-size: 30.2px;
 }
 .experience .youtube-copy p {
-  font-size: 14px;
+  font-size: 15.7px;
 }
 .experience .story-column {
   grid-column: 1/-1;
@@ -1753,7 +1753,7 @@ html {
   gap: 60px;
 }
 .experience .apps-heading h2 {
-  font-size: 52px;
+  font-size: 58.2px;
   line-height: 1.4;
   letter-spacing: -2px;
 }
@@ -1785,7 +1785,7 @@ html {
   text-align: left;
   color: #a8b49d;
   font: inherit;
-  font-size: 15px;
+  font-size: 16.8px;
   line-height: 1.7;
   padding: 25px 16px;
   border: 0;
@@ -1806,7 +1806,7 @@ html {
 }
 .app-selector > i {
   font-style: normal;
-  font-size: 20px;
+  font-size: 22.4px;
 }
 .app-selector[aria-pressed="true"] {
   background: #a6e44413;
@@ -1842,7 +1842,7 @@ html {
   border-radius: 23px;
 }
 .experience .app-identity h3 {
-  font-size: 23px;
+  font-size: 25.8px;
 }
 .experience .app-kicker,
 .experience .app-features,
@@ -1855,7 +1855,7 @@ html {
   color: #aebba3;
 }
 .experience .app-card h4 {
-  font-size: 21px;
+  font-size: 23.5px;
 }
 .experience .app-card .btn {
   border-color: #a4b79335;
@@ -1929,13 +1929,13 @@ html {
     gap: 16px;
   }
   .experience .main-nav a:not(.wordmark) {
-    font-size: 11px;
+    font-size: 12.3px;
   }
   .experience .featured {
     gap: 0 30px;
   }
   .experience .section-headline {
-    font-size: 39px;
+    font-size: 43.7px;
   }
   .experience .community-name {
     letter-spacing: -2px;
@@ -1944,7 +1944,7 @@ html {
     gap: 30px;
   }
   .experience .youtube-visual-title {
-    font-size: 30px;
+    font-size: 33.6px;
   }
   .experience .apps-section {
     padding: 76px 36px;
@@ -1961,7 +1961,7 @@ html {
     align-items: flex-start;
   }
   .experience .app-identity h3 {
-    font-size: 20px;
+    font-size: 22.4px;
   }
 }
 @media (max-width: 700px) {
@@ -1986,7 +1986,7 @@ html {
     border-radius: 99px;
     color: #e4eedc;
     font: inherit;
-    font-size: 11px;
+    font-size: 12.3px;
   }
   .experience .main-nav .nav-links {
     display: flex;
@@ -2004,7 +2004,7 @@ html {
     display: none;
   }
   .experience .main-nav .nav-links a {
-    font-size: 14px;
+    font-size: 15.7px;
     padding: 12px 0;
   }
   .experience .hero-content {
@@ -2014,7 +2014,7 @@ html {
     padding-bottom: 240px;
   }
   .experience .hero-subtitle {
-    font-size: 7px !important;
+    font-size: 12px !important;
     letter-spacing: 1.4px !important;
     margin-bottom: 25px !important;
   }
@@ -2023,7 +2023,7 @@ html {
     letter-spacing: -0.045em;
   }
   .experience .hero-title {
-    font-size: 15px;
+    font-size: 16.8px;
     margin-top: 27px;
     line-height: 1.9;
   }
@@ -2033,10 +2033,10 @@ html {
     gap: 10px;
   }
   .experience .hero-cta .btn {
-    font-size: 12px;
+    font-size: 13.4px;
   }
   .hero-app-link {
-    font-size: 11px;
+    font-size: 12.3px;
   }
   #enso-canvas {
     width: 130%;
@@ -2062,16 +2062,16 @@ html {
     height: 46px;
   }
   .hero-signature strong {
-    font-size: 17px;
+    font-size: 19px;
   }
   .hero-signature span {
-    font-size: 9px;
+    font-size: 12px;
   }
   .hero-foot {
     left: 24px;
     right: 24px;
     bottom: 24px;
-    font-size: 7px;
+    font-size: 12px;
     letter-spacing: 1px;
   }
   .hero-foot > span:first-child > span {
@@ -2083,10 +2083,10 @@ html {
     gap: 14px;
   }
   .profile-statement > div > p {
-    font-size: 32px;
+    font-size: 35.8px;
   }
   .profile-description {
-    font-size: 13px;
+    font-size: 14.6px;
     margin-top: 20px;
   }
   .experience .topic-strip {
@@ -2097,11 +2097,11 @@ html {
     padding-bottom: 58px;
   }
   .experience .section-headline {
-    font-size: 32px;
+    font-size: 35.8px;
     letter-spacing: -1px;
   }
   .experience .section-intro > p {
-    font-size: 12px;
+    font-size: 13.4px;
   }
   .experience .featured {
     margin-bottom: 76px !important;
@@ -2112,16 +2112,16 @@ html {
     border-radius: 120px 120px 6px 6px;
   }
   .experience .community-name {
-    font-size: 50px;
+    font-size: 56px;
   }
   .experience .community-overview {
     padding-bottom: 25px;
   }
   .experience .community-overview > p {
-    font-size: 13px;
+    font-size: 14.6px;
   }
   .experience .content-heading h2 {
-    font-size: 29px;
+    font-size: 32.5px;
   }
   .experience .card-grid {
     grid-template-columns: 1fr;
@@ -2134,10 +2134,10 @@ html {
     padding-top: 0 !important;
   }
   .experience .card-grid .story-card .card-title {
-    font-size: 22px;
+    font-size: 24.6px;
   }
   .experience .card-grid .story-card .card-content {
-    font-size: 13px;
+    font-size: 14.6px;
   }
   .experience .card-grid .story-card .card-image-wrap {
     aspect-ratio: 1.65;
@@ -2156,7 +2156,7 @@ html {
     padding: 24px;
   }
   .experience .youtube-visual-title {
-    font-size: 30px;
+    font-size: 33.6px;
   }
   .experience .youtube-play {
     width: 48px;
@@ -2164,7 +2164,7 @@ html {
     right: 20px;
   }
   .experience .youtube-copy h3 {
-    font-size: 23px;
+    font-size: 25.8px;
   }
   .experience .story-column {
     display: flex !important;
@@ -2181,7 +2181,7 @@ html {
     gap: 22px;
   }
   .experience .apps-heading h2 {
-    font-size: 36px;
+    font-size: 40.3px;
   }
   .apps-enhanced .apps-showcase {
     grid-template-columns: 1fr;
@@ -2198,7 +2198,7 @@ html {
     border-radius: 8px;
     padding: 12px;
     gap: 9px;
-    font-size: 11px;
+    font-size: 12.3px;
   }
   .app-selector img {
     width: 30px;
@@ -2228,10 +2228,10 @@ html {
     border-radius: 15px;
   }
   .experience .app-identity h3 {
-    font-size: 18px;
+    font-size: 20.2px;
   }
   .experience .app-card h4 {
-    font-size: 18px;
+    font-size: 20.2px;
   }
   .experience .site-footer {
     padding: 44px 24px 26px;
@@ -2263,7 +2263,7 @@ html {
     gap: 8px;
   }
   .experience:not(.interactive) .main-nav .nav-links a {
-    font-size: 10px;
+    font-size: 12px;
     padding: 6px;
   }
 }
@@ -2287,7 +2287,7 @@ html {
 }
 .footer-brand .footer-message {
   margin-top: 16px;
-  font-size: 12px;
+  font-size: 13.4px;
   line-height: 1.8;
 }
 .footer-menu {
@@ -2297,13 +2297,13 @@ html {
   gap: 4px;
 }
 .footer-menu h2 {
-  font-size: 13px;
+  font-size: 14.6px;
   font-weight: 600;
   margin-bottom: 12px;
   color: #27361d;
 }
 .footer-menu a {
-  font-size: 12px;
+  font-size: 13.4px;
   line-height: 1.7;
   color: #59644f;
   text-decoration: none;
@@ -2326,11 +2326,11 @@ html {
   color: #65715a;
 }
 .footer-bottom small {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.04em;
 }
 .footer-bottom a {
-  font-size: 11px;
+  font-size: 12.3px;
   color: #59644f;
   text-decoration: none;
   padding-block: 10px;
@@ -2687,5 +2687,50 @@ html:has(.experience.motion-paused) {
       translate 1s cubic-bezier(0.22, 1, 0.36, 1),
       opacity 0.8s ease,
       transform 0.18s linear;
+  }
+}
+
+/* Keep the motion control reachable on short iPhone viewports. */
+@media (max-width: 700px) {
+  .experience .motion-toggle {
+    position: fixed;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 100;
+    background: #182313;
+    color: #eef7e7;
+    box-shadow: 0 4px 20px #0003;
+    font-size: 14px;
+    min-height: 44px;
+  }
+  .experience .topic-strip > .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 16px;
+  }
+  .experience .hero-foot {
+    padding-right: 0;
+  }
+  .experience .site-footer {
+    padding-bottom: 100px;
+  }
+  .experience .hero-title {
+    font-size: 18px;
+  }
+  .experience .profile-description,
+  .experience .community-overview > p,
+  .experience .card-grid .story-card .card-content,
+  .experience .section-intro > p {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 701px) {
+  body > .motion-toggle {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 100;
+    background: #182313;
   }
 }

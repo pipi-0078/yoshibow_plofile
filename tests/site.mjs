@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import { readFile, mkdir } from "node:fs/promises";
-import { chromium } from "playwright";
+import { chromium, webkit } from "playwright";
 import { serve } from "./server.mjs";
 const localChrome =
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -11,7 +11,9 @@ const executablePath =
 const server = process.env.SITE_URL ? null : await serve();
 const base =
   process.env.SITE_URL || `http://127.0.0.1:${server.address().port}`;
-const browser = await chromium.launch({ headless: true, executablePath });
+const browser = await (process.env.TEST_BROWSER === "webkit"
+  ? webkit.launch({ headless: true })
+  : chromium.launch({ headless: true, executablePath }));
 const errors = [];
 try {
   await mkdir("test-results", { recursive: true });
@@ -181,6 +183,23 @@ try {
   });
   await touchPage.goto(base);
   await touchPage.waitForSelector(".apps-enhanced");
+  assert(
+    await touchPage.locator(".motion-toggle").evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      return r.top >= 0 && r.bottom <= innerHeight && r.left >= 0;
+    }),
+    "Motion control is inside the initial iPhone viewport",
+  );
+  const dot = touchPage.locator(".status-dot");
+  const firstTransform = await dot.evaluate(
+    (el) => getComputedStyle(el).transform,
+  );
+  await touchPage.waitForTimeout(400);
+  assert.notEqual(
+    await dot.evaluate((el) => getComputedStyle(el).transform),
+    firstTransform,
+    "Visible hero animation changes over time",
+  );
   const touchImage = touchPage.locator(".story-card .card-image-wrap").first();
   await touchImage.scrollIntoViewIfNeeded();
   await touchPage.waitForTimeout(300);
