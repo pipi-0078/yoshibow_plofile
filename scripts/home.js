@@ -14,6 +14,7 @@ initProgress();
 initImageDepth(motion);
 initButtonResponse(motion);
 initTouchDepth(motion);
+initTouchEntrances(motion);
 initEnso(root, motion);
 
 function initMenu() {
@@ -301,7 +302,7 @@ function initTouchDepth(motion) {
   function update() {
     frame = 0;
     frames.forEach((el) => {
-      if (!touch.matches || motion.paused || motion.prefersReducedMotion) {
+      if (!touch.matches || motion.paused) {
         el.style.removeProperty("--touch-depth");
         return;
       }
@@ -326,4 +327,51 @@ function initTouchDepth(motion) {
   touch.addEventListener("change", schedule);
   motion.onChange(schedule);
   schedule();
+}
+
+// Replay a visible entrance on touch devices, including after an explicit resume.
+function initTouchEntrances(motion) {
+  const touch = matchMedia("(max-width: 700px), (pointer: coarse)");
+  const visible = new Set();
+  const animations = new Map();
+  function play(el) {
+    animations.get(el)?.cancel();
+    if (motion.paused || !touch.matches) return;
+    const image = el.querySelector("img") || el;
+    const direction = el.dataset.mediaDirection;
+    const offset =
+      { top: "0,-36px", bottom: "0,36px", left: "-36px,0", right: "36px,0" }[
+        direction
+      ] || "0,36px";
+    animations.set(
+      el,
+      image.animate(
+        [
+          { opacity: 0.25, transform: `translate(${offset}) scale(1.16)` },
+          { opacity: 1, transform: "translate(0,0) scale(1.12)" },
+        ],
+        { duration: 1400, easing: "cubic-bezier(.22,1,.36,1)" },
+      ),
+    );
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          visible.add(entry.target);
+          play(entry.target);
+        } else {
+          visible.delete(entry.target);
+          animations.get(entry.target)?.cancel();
+          animations.delete(entry.target);
+        }
+      }
+    },
+    { threshold: 0.25 },
+  );
+  document
+    .querySelectorAll("[data-media-direction]")
+    .forEach((el) => observer.observe(el));
+  motion.onChange(() => visible.forEach(play));
+  touch.addEventListener("change", () => visible.forEach(play));
 }

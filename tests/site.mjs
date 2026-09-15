@@ -206,6 +206,27 @@ try {
     "",
     "Reduced motion clears touch depth",
   );
+  await touchPage.locator(".motion-toggle").evaluate((el) => el.click());
+  await touchPage.waitForTimeout(100);
+  assert(
+    await touchImage
+      .locator("img")
+      .evaluate((el) =>
+        el.getAnimations().some((a) => a.playState === "running"),
+      ),
+    "Explicit resume starts a real image animation even with OS reduced motion",
+  );
+  await touchPage.locator(".motion-toggle").evaluate((el) => el.click());
+  assert.equal(
+    await touchImage
+      .locator("img")
+      .evaluate(
+        (el) =>
+          el.getAnimations().filter((a) => a.playState === "running").length,
+      ),
+    0,
+    "Pause cancels touch animation",
+  );
   await touchPage.close();
   console.log("PASS touch-device scroll animation and reduced motion");
   await page.emulateMedia({ reducedMotion: "reduce" });
