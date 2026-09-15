@@ -3,10 +3,7 @@ import { initEnso } from "./enso.js";
 
 const root = document.body;
 root.classList.add("interactive");
-const motion = createMotionController(
-  root,
-  document.querySelector(".motion-toggle"),
-);
+const motion = createMotionController(root);
 initMenu();
 initApps(motion);
 initReveals(motion);

@@ -22,6 +22,7 @@ try {
   const expected = ["top", "bottom", "left", "right", "top", "bottom", "left"];
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 950 });
+    await page.emulateMedia({ reducedMotion: "no-preference" });
     await page.goto(base);
     await page.waitForSelector(".apps-enhanced");
     await page.evaluate(() => document.fonts.ready);
@@ -107,7 +108,7 @@ try {
           .evaluate((el) => el.style.getPropertyValue("--button-x") !== ""),
         "Button responds",
       );
-      await page.locator(".motion-toggle").click();
+      await page.emulateMedia({ reducedMotion: "reduce" });
       assert.equal(
         await page.locator(".image-active").count(),
         0,
@@ -121,7 +122,7 @@ try {
         "",
         "Pause resets button",
       );
-      await page.locator(".motion-toggle").click();
+      await page.emulateMedia({ reducedMotion: "no-preference" });
     }
     for (let i = 0; i < 4; i++) {
       await page.locator(".app-selector").nth(i).click();
@@ -162,11 +163,8 @@ try {
     );
     await page.locator(".community-details summary").first().click();
     await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
-    await page.locator(".motion-toggle").click();
-    assert.equal(
-      await page.locator(".motion-toggle").getAttribute("aria-pressed"),
-      "true",
-    );
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    assert.equal(await page.locator(".motion-toggle").count(), 0);
     if (width === 1440 || width === 390)
       await page.screenshot({
         path: `test-results/home-${width}.png`,
@@ -183,13 +181,7 @@ try {
   });
   await touchPage.goto(base);
   await touchPage.waitForSelector(".apps-enhanced");
-  assert(
-    await touchPage.locator(".motion-toggle").evaluate((el) => {
-      const r = el.getBoundingClientRect();
-      return r.top >= 0 && r.bottom <= innerHeight && r.left >= 0;
-    }),
-    "Motion control is inside the initial iPhone viewport",
-  );
+  assert.equal(await touchPage.locator(".motion-toggle").count(), 0);
   const dot = touchPage.locator(".status-dot");
   const firstTransform = await dot.evaluate(
     (el) => getComputedStyle(el).transform,
@@ -225,7 +217,7 @@ try {
     "",
     "Reduced motion clears touch depth",
   );
-  await touchPage.locator(".motion-toggle").evaluate((el) => el.click());
+  await touchPage.emulateMedia({ reducedMotion: "no-preference" });
   await touchPage.waitForTimeout(100);
   assert(
     await touchImage
@@ -233,9 +225,9 @@ try {
       .evaluate((el) =>
         el.getAnimations().some((a) => a.playState === "running"),
       ),
-    "Explicit resume starts a real image animation even with OS reduced motion",
+    "Motion automatically resumes when OS reduced motion is disabled",
   );
-  await touchPage.locator(".motion-toggle").evaluate((el) => el.click());
+  await touchPage.emulateMedia({ reducedMotion: "reduce" });
   assert.equal(
     await touchImage
       .locator("img")
@@ -252,8 +244,10 @@ try {
   await page.reload();
   await page.waitForSelector(".apps-enhanced");
   assert.equal(
-    await page.locator(".motion-toggle").getAttribute("aria-pressed"),
-    "true",
+    await page
+      .locator("body")
+      .evaluate((el) => el.classList.contains("motion-paused")),
+    true,
   );
   assert.equal(await page.locator(".reveal-pending,.media-pending").count(), 0);
   const nojs = await browser.newPage({

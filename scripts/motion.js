@@ -1,12 +1,10 @@
-/** Single source of truth for the user toggle and OS motion preference. */
-export function createMotionController(root, toggle) {
+/** Single source of truth for the OS motion preference. */
+export function createMotionController(root) {
   const preference = matchMedia("(prefers-reduced-motion: reduce)");
   const listeners = new Set();
   let paused = preference.matches;
   function update() {
     root.classList.toggle("motion-paused", paused);
-    toggle.setAttribute("aria-pressed", String(paused));
-    toggle.textContent = paused ? "動きを再開" : "動きを停止";
     if (paused) {
       document
         .querySelectorAll(".reveal-pending, .media-pending")
@@ -17,10 +15,6 @@ export function createMotionController(root, toggle) {
     }
     listeners.forEach((listener) => listener());
   }
-  toggle.addEventListener("click", () => {
-    paused = !paused;
-    update();
-  });
   preference.addEventListener("change", (event) => {
     paused = event.matches;
     update();
