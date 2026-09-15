@@ -2583,3 +2583,97 @@ html:has(.experience.motion-paused) {
     object-position: center;
   }
 }
+
+/* A restrained light pass and tactile depth, confined to existing media frames. */
+.experience .card-image-wrap {
+  position: relative;
+  isolation: isolate;
+}
+.experience .card-image-wrap::before,
+.experience .card-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .experience:not(.motion-paused) .card-image-wrap.media-revealed::before {
+    background: linear-gradient(
+      110deg,
+      transparent 25%,
+      #f4ffdb45 47%,
+      #ffffff60 50%,
+      transparent 72%
+    );
+    animation: media-light-pass 1.35s cubic-bezier(0.22, 1, 0.36, 1)
+      var(--media-delay, 0ms) both;
+  }
+  @keyframes media-light-pass {
+    0% {
+      translate: -110% 0;
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.8;
+    }
+    100% {
+      translate: 110% 0;
+      opacity: 0;
+    }
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .experience:not(.motion-paused) .card-image-wrap::after {
+    background: radial-gradient(
+      ellipse at var(--light-x, 50%) var(--light-y, 50%),
+      #eeffd933,
+      transparent 65%
+    );
+    transition: opacity 0.55s ease;
+  }
+  .experience:not(.motion-paused) .card-image-wrap.image-active::after {
+    opacity: 1;
+  }
+  .experience:not(.motion-paused) .card-image-wrap.image-active img {
+    transform: perspective(1000px)
+      translate(var(--image-x, 0px), var(--image-y, 0px))
+      rotateX(var(--image-rx, 0deg)) rotateY(var(--image-ry, 0deg)) scale(1.075);
+    transition:
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      translate 1s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.8s ease;
+  }
+  .experience:not(.motion-paused) .btn-primary {
+    translate: var(--button-x, 0px) var(--button-y, 0px);
+    transition:
+      translate 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.3s,
+      background 0.3s,
+      box-shadow 0.3s;
+  }
+  .experience:not(.motion-paused) .btn-primary:hover {
+    box-shadow: 0 8px 30px #76b90035;
+  }
+  .experience:not(.motion-paused) .app-selector {
+    transition:
+      background 0.4s,
+      color 0.4s,
+      border-color 0.4s;
+  }
+  .experience:not(.motion-paused) .app-selector img {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .experience:not(.motion-paused) .app-selector:hover img {
+    transform: translateY(-3px) rotate(-4deg);
+  }
+}
+.experience.motion-paused .btn-primary {
+  translate: none;
+}
+.experience.motion-paused .card-image-wrap::before,
+.experience.motion-paused .card-image-wrap::after {
+  opacity: 0;
+  animation: none;
+}

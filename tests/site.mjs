@@ -22,6 +22,7 @@ try {
     await page.setViewportSize({ width, height: 950 });
     await page.goto(base);
     await page.waitForSelector(".apps-enhanced");
+    await page.evaluate(() => document.fonts.ready);
     await page.evaluate(async () => {
       for (const img of document.images) img.loading = "eager";
       await Promise.all(
@@ -47,7 +48,7 @@ try {
     assert.equal(
       await page.locator(".reveal-pending,.media-pending").count(),
       0,
-      "All entrances finish",
+      `All entrances finish at ${width}px: ${await page.locator(".reveal-pending,.media-pending").evaluateAll((es) => es.map((e) => e.className))}`,
     );
     assert.deepEqual(
       await page
@@ -86,6 +87,39 @@ try {
           "Media uses 16:9",
         );
       }
+    }
+    if (width === 1440) {
+      const image = page.locator(".story-card .card-image-wrap").first();
+      await image.hover();
+      await page.waitForTimeout(100);
+      assert(
+        await image.evaluate((el) => el.classList.contains("image-active")),
+        "Image depth responds",
+      );
+      await page.locator(".btn-primary").first().hover();
+      await page.waitForTimeout(100);
+      assert(
+        await page
+          .locator(".btn-primary")
+          .first()
+          .evaluate((el) => el.style.getPropertyValue("--button-x") !== ""),
+        "Button responds",
+      );
+      await page.locator(".motion-toggle").click();
+      assert.equal(
+        await page.locator(".image-active").count(),
+        0,
+        "Pause clears image lighting",
+      );
+      assert.equal(
+        await page
+          .locator(".btn-primary")
+          .first()
+          .evaluate((el) => el.style.getPropertyValue("--button-x")),
+        "",
+        "Pause resets button",
+      );
+      await page.locator(".motion-toggle").click();
     }
     for (let i = 0; i < 4; i++) {
       await page.locator(".app-selector").nth(i).click();

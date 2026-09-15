@@ -12,6 +12,7 @@ initApps(motion);
 initReveals(motion);
 initProgress();
 initImageDepth(motion);
+initButtonResponse(motion);
 initEnso(root, motion);
 
 function initMenu() {
@@ -152,6 +153,7 @@ function initReveals(motion) {
               `${Math.min(index, 2) * 120}ms`,
             );
             entry.target.classList.remove("media-pending");
+            if (!motion.paused) entry.target.classList.add("media-revealed");
             mediaObserver.unobserve(entry.observed);
           });
       },
@@ -208,6 +210,11 @@ function initImageDepth(motion) {
     const reset = () => {
       el.style.removeProperty("--image-x");
       el.style.removeProperty("--image-y");
+      el.style.removeProperty("--image-rx");
+      el.style.removeProperty("--image-ry");
+      el.style.removeProperty("--light-x");
+      el.style.removeProperty("--light-y");
+      el.classList.remove("image-active");
     };
     el.addEventListener(
       "pointermove",
@@ -223,6 +230,11 @@ function initImageDepth(motion) {
             if (motion.paused || !finePointer.matches) return;
             el.style.setProperty("--image-x", `${px}px`);
             el.style.setProperty("--image-y", `${py}px`);
+            el.style.setProperty("--image-rx", `${-py * 0.6}deg`);
+            el.style.setProperty("--image-ry", `${px * 0.6}deg`);
+            el.style.setProperty("--light-x", `${50 + px * 12.5}%`);
+            el.style.setProperty("--light-y", `${50 + py * 12.5}%`);
+            el.classList.add("image-active");
           });
       },
       { passive: true },
@@ -232,6 +244,46 @@ function initImageDepth(motion) {
       queued = 0;
       reset();
     });
+    motion.onChange(reset);
+  });
+}
+
+function initButtonResponse(motion) {
+  const finePointer = matchMedia("(hover:hover) and (pointer:fine)");
+  document.querySelectorAll(".btn-primary").forEach((button) => {
+    let frame = 0;
+    const reset = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      button.style.removeProperty("--button-x");
+      button.style.removeProperty("--button-y");
+    };
+    button.addEventListener(
+      "pointermove",
+      (event) => {
+        if (
+          motion.paused ||
+          !finePointer.matches ||
+          event.pointerType === "touch"
+        )
+          return;
+        const box = button.getBoundingClientRect();
+        const x = ((event.clientX - box.left) / box.width - 0.5) * 6;
+        const y = ((event.clientY - box.top) / box.height - 0.5) * 6;
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          if (motion.paused || !finePointer.matches) return;
+          button.style.setProperty("--button-x", `${x}px`);
+          button.style.setProperty("--button-y", `${y}px`);
+        });
+      },
+      { passive: true },
+    );
+    button.addEventListener("pointerleave", reset);
+    button.addEventListener("blur", reset);
+    button.addEventListener("focus", reset);
+    finePointer.addEventListener("change", reset);
     motion.onChange(reset);
   });
 }
