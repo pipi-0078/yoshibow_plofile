@@ -108,21 +108,6 @@ try {
           .evaluate((el) => el.style.getPropertyValue("--button-x") !== ""),
         "Button responds",
       );
-      await page.emulateMedia({ reducedMotion: "reduce" });
-      assert.equal(
-        await page.locator(".image-active").count(),
-        0,
-        "Pause clears image lighting",
-      );
-      assert.equal(
-        await page
-          .locator(".btn-primary")
-          .first()
-          .evaluate((el) => el.style.getPropertyValue("--button-x")),
-        "",
-        "Pause resets button",
-      );
-      await page.emulateMedia({ reducedMotion: "no-preference" });
     }
     for (let i = 0; i < 4; i++) {
       await page.locator(".app-selector").nth(i).click();
@@ -171,7 +156,7 @@ try {
         fullPage: true,
       });
     console.log(
-      `PASS ${width}px: images, entrances, app selection, keyboard, disclosure, menu, pause`,
+      `PASS ${width}px: images, entrances, app selection, keyboard, disclosure, menu, automatic motion`,
     );
   }
   const touchPage = await browser.newPage({
@@ -209,47 +194,36 @@ try {
     "Touch depth changes with scrolling",
   );
   await touchPage.emulateMedia({ reducedMotion: "reduce" });
-  await touchPage.waitForTimeout(100);
-  assert.equal(
-    await touchImage.evaluate((el) =>
-      el.style.getPropertyValue("--touch-depth"),
-    ),
-    "",
-    "Reduced motion clears touch depth",
+  await touchPage.reload();
+  await touchPage.waitForSelector(".apps-enhanced");
+  const reducedStart = await dot.evaluate(
+    (el) => getComputedStyle(el).transform,
   );
-  await touchPage.emulateMedia({ reducedMotion: "no-preference" });
-  await touchPage.waitForTimeout(100);
+  await touchPage.waitForTimeout(400);
+  assert.notEqual(
+    await dot.evaluate((el) => getComputedStyle(el).transform),
+    reducedStart,
+    "Hero animates automatically even with OS reduced motion",
+  );
+  await touchImage.scrollIntoViewIfNeeded();
+  await touchPage.waitForTimeout(150);
   assert(
     await touchImage
       .locator("img")
       .evaluate((el) =>
         el.getAnimations().some((a) => a.playState === "running"),
       ),
-    "Motion automatically resumes when OS reduced motion is disabled",
+    "Image entrance plays with OS reduced motion",
   );
-  await touchPage.emulateMedia({ reducedMotion: "reduce" });
+  assert.equal(await touchPage.locator(".motion-toggle").count(), 0);
   assert.equal(
-    await touchImage
-      .locator("img")
-      .evaluate(
-        (el) =>
-          el.getAnimations().filter((a) => a.playState === "running").length,
-      ),
-    0,
-    "Pause cancels touch animation",
-  );
-  await touchPage.close();
-  console.log("PASS touch-device scroll animation and reduced motion");
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.reload();
-  await page.waitForSelector(".apps-enhanced");
-  assert.equal(
-    await page
+    await touchPage
       .locator("body")
       .evaluate((el) => el.classList.contains("motion-paused")),
-    true,
+    false,
   );
-  assert.equal(await page.locator(".reveal-pending,.media-pending").count(), 0);
+  await touchPage.close();
+  console.log("PASS automatic animation with both OS motion settings");
   const nojs = await browser.newPage({
     javaScriptEnabled: false,
     viewport: { width: 390, height: 900 },
@@ -264,6 +238,10 @@ try {
   }
   assert.deepEqual(errors, []);
   const html = await readFile("index.html", "utf8");
+  assert(
+    html.includes("プロダクトを見る") && !html.includes("活動を探索する"),
+    "Updated hero CTA",
+  );
   assert(!/[\u{1F000}-\u{1FAFF}\u2600-\u27BF\uFE0F]/u.test(html), "No emoji");
   assert(
     !/永久無料|ローカルAI|Yoshibowが作成|Yoshihide Matsumoto|私自身|私が|私の/.test(
@@ -271,9 +249,7 @@ try {
     ),
     "Copy corrections preserved",
   );
-  console.log(
-    "PASS reduced motion, no-JS fallback, support routes, copy and console checks",
-  );
+  console.log("PASS no-JS fallback, support routes, copy and console checks");
 } finally {
   await browser.close();
   if (server) await new Promise((resolve) => server.close(resolve));

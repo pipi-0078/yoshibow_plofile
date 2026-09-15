@@ -63,7 +63,7 @@ function initApps(motion) {
         panel.hidden = n !== i;
         selectors[n].setAttribute("aria-pressed", String(n === i));
       });
-      if (!motion.paused && !motion.prefersReducedMotion)
+      if (!motion.paused)
         card.animate(
           [
             { opacity: 0.3, transform: "translateY(8px)" },

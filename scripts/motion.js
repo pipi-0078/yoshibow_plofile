@@ -1,8 +1,7 @@
-/** Single source of truth for the OS motion preference. */
+/** Animate while the page is visible; suspend work in background tabs. */
 export function createMotionController(root) {
-  const preference = matchMedia("(prefers-reduced-motion: reduce)");
   const listeners = new Set();
-  let paused = preference.matches;
+  let paused = document.hidden;
   function update() {
     root.classList.toggle("motion-paused", paused);
     if (paused) {
@@ -15,17 +14,14 @@ export function createMotionController(root) {
     }
     listeners.forEach((listener) => listener());
   }
-  preference.addEventListener("change", (event) => {
-    paused = event.matches;
+  document.addEventListener("visibilitychange", () => {
+    paused = document.hidden;
     update();
   });
   update();
   return {
     get paused() {
       return paused;
-    },
-    get prefersReducedMotion() {
-      return preference.matches;
     },
     onChange(listener) {
       listeners.add(listener);

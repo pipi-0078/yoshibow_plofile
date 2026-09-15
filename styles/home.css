@@ -981,17 +981,7 @@ html {
     font-size: 13.4px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .stripe-home *,
-  .stripe-home *:before,
-  .stripe-home *:after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
+
 /* Keep decorative orbits inside the portrait composition at every viewport. */
 .stripe-home .orbit {
   width: 76%;
@@ -1880,21 +1870,21 @@ html {
   opacity: 0;
   translate: 0 25px;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .experience .hero-text-block {
-    animation: hero-in 0.85s ease-out both;
+
+.experience .hero-text-block {
+  animation: hero-in 0.85s ease-out both;
+}
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
   }
-  @keyframes hero-in {
-    from {
-      opacity: 0;
-      transform: translateY(18px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
 @media (max-width: 1000px) {
   .experience .container {
     padding-inline: 36px;
@@ -2226,12 +2216,7 @@ html {
     padding: 44px 24px 26px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .experience [data-reveal] {
-    opacity: 1;
-    translate: none;
-  }
-}
+
 .experience.motion-paused * {
   animation: none !important;
   transition: none !important;
@@ -2357,64 +2342,61 @@ html {
 }
 
 /* Editorial motion: material images, staggered introductions, quiet link feedback. */
-@media (prefers-reduced-motion: no-preference) {
-  .experience:not(.motion-paused) [data-reveal] {
-    transition:
-      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-      translate 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+
+.experience:not(.motion-paused) [data-reveal] {
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.experience:not(.motion-paused) .story-card .card-image-wrap img,
+.experience:not(.motion-paused) .featured > .card-image-wrap img {
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  clip-path: inset(0 0 0 0);
+  transform: scale(1.025);
+}
+.experience:not(.motion-paused) .story-card.reveal-pending .card-image-wrap img,
+.experience:not(.motion-paused)
+  .featured
+  > .card-image-wrap.reveal-pending
+  img {
+  clip-path: inset(8% 0 8% 0);
+  transform: scale(1.12);
+}
+.experience:not(.motion-paused) .hero-subtitle,
+.experience:not(.motion-paused) .hero-display,
+.experience:not(.motion-paused) .hero-title,
+.experience:not(.motion-paused) .hero-cta {
+  animation: editorial-enter 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.experience:not(.motion-paused) .hero-display {
+  animation-delay: 0.1s;
+}
+.experience:not(.motion-paused) .hero-title {
+  animation-delay: 0.2s;
+}
+.experience:not(.motion-paused) .hero-cta {
+  animation-delay: 0.3s;
+}
+.experience .footer-menu:nth-child(3) {
+  transition-delay: 0.08s;
+}
+.experience .footer-menu:nth-child(4) {
+  transition-delay: 0.16s;
+}
+@keyframes editorial-enter {
+  from {
+    opacity: 0;
+    translate: 0 16px;
   }
-  .experience:not(.motion-paused) .story-card .card-image-wrap img,
-  .experience:not(.motion-paused) .featured > .card-image-wrap img {
-    transition:
-      transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-      clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-    clip-path: inset(0 0 0 0);
-    transform: scale(1.025);
-  }
-  .experience:not(.motion-paused)
-    .story-card.reveal-pending
-    .card-image-wrap
-    img,
-  .experience:not(.motion-paused)
-    .featured
-    > .card-image-wrap.reveal-pending
-    img {
-    clip-path: inset(8% 0 8% 0);
-    transform: scale(1.12);
-  }
-  .experience:not(.motion-paused) .hero-subtitle,
-  .experience:not(.motion-paused) .hero-display,
-  .experience:not(.motion-paused) .hero-title,
-  .experience:not(.motion-paused) .hero-cta {
-    animation: editorial-enter 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-  .experience:not(.motion-paused) .hero-display {
-    animation-delay: 0.1s;
-  }
-  .experience:not(.motion-paused) .hero-title {
-    animation-delay: 0.2s;
-  }
-  .experience:not(.motion-paused) .hero-cta {
-    animation-delay: 0.3s;
-  }
-  .experience .footer-menu:nth-child(3) {
-    transition-delay: 0.08s;
-  }
-  .experience .footer-menu:nth-child(4) {
-    transition-delay: 0.16s;
-  }
-  @keyframes editorial-enter {
-    from {
-      opacity: 0;
-      translate: 0 16px;
-    }
-    to {
-      opacity: 1;
-      translate: 0 0;
-    }
+  to {
+    opacity: 1;
+    translate: 0 0;
   }
 }
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+
+@media (hover: hover) and (pointer: fine) {
   .experience:not(.motion-paused) .story-card .card-image-wrap:hover img {
     transform: translate(var(--image-x, 0px), var(--image-y, 0px)) scale(1.055);
   }
@@ -2483,29 +2465,29 @@ html:has(.experience.motion-paused) {
   --media-from: 48px 0;
   --media-clip: inset(0 0 0 100%);
 }
-@media (prefers-reduced-motion: no-preference) {
-  .experience:not(.motion-paused) [data-media-direction] img {
-    opacity: 1;
-    translate: 0 0;
-    transition:
-      translate 1s cubic-bezier(0.22, 1, 0.36, 1) var(--media-delay, 0ms),
-      opacity 0.8s ease var(--media-delay, 0ms),
-      transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-      clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .experience:not(.motion-paused) [data-media-direction].media-pending img {
-    opacity: 0;
-    translate: var(--media-from);
-  }
-  .experience:not(.motion-paused) .youtube-visual[data-media-direction] {
-    clip-path: inset(0);
-    transition: clip-path 1s cubic-bezier(0.22, 1, 0.36, 1)
-      var(--media-delay, 0ms);
-  }
-  .experience:not(.motion-paused) .youtube-visual.media-pending {
-    clip-path: var(--media-clip);
-  }
+
+.experience:not(.motion-paused) [data-media-direction] img {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    translate 1s cubic-bezier(0.22, 1, 0.36, 1) var(--media-delay, 0ms),
+    opacity 0.8s ease var(--media-delay, 0ms),
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.experience:not(.motion-paused) [data-media-direction].media-pending img {
+  opacity: 0;
+  translate: var(--media-from);
+}
+.experience:not(.motion-paused) .youtube-visual[data-media-direction] {
+  clip-path: inset(0);
+  transition: clip-path 1s cubic-bezier(0.22, 1, 0.36, 1)
+    var(--media-delay, 0ms);
+}
+.experience:not(.motion-paused) .youtube-visual.media-pending {
+  clip-path: var(--media-clip);
+}
+
 .experience.motion-paused [data-media-direction] img {
   opacity: 1 !important;
   translate: none !important;
@@ -2525,15 +2507,6 @@ html:has(.experience.motion-paused) {
   }
   [data-media-direction="right"] {
     --media-from: 28px 0;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .experience [data-media-direction] img {
-    opacity: 1;
-    translate: none;
-  }
-  .experience .youtube-visual {
-    clip-path: none;
   }
 }
 
@@ -2587,33 +2560,33 @@ html:has(.experience.motion-paused) {
   z-index: 1;
   opacity: 0;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .experience:not(.motion-paused) .card-image-wrap.media-revealed::before {
-    background: linear-gradient(
-      110deg,
-      transparent 25%,
-      #f4ffdb45 47%,
-      #ffffff60 50%,
-      transparent 72%
-    );
-    animation: media-light-pass 1.35s cubic-bezier(0.22, 1, 0.36, 1)
-      var(--media-delay, 0ms) both;
+
+.experience:not(.motion-paused) .card-image-wrap.media-revealed::before {
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    #f4ffdb45 47%,
+    #ffffff60 50%,
+    transparent 72%
+  );
+  animation: media-light-pass 1.35s cubic-bezier(0.22, 1, 0.36, 1)
+    var(--media-delay, 0ms) both;
+}
+@keyframes media-light-pass {
+  0% {
+    translate: -110% 0;
+    opacity: 0;
   }
-  @keyframes media-light-pass {
-    0% {
-      translate: -110% 0;
-      opacity: 0;
-    }
-    20% {
-      opacity: 0.8;
-    }
-    100% {
-      translate: 110% 0;
-      opacity: 0;
-    }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    translate: 110% 0;
+    opacity: 0;
   }
 }
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+
+@media (hover: hover) and (pointer: fine) {
   .experience:not(.motion-paused) .card-image-wrap::after {
     background: radial-gradient(
       ellipse at var(--light-x, 50%) var(--light-y, 50%),
@@ -2668,7 +2641,7 @@ html:has(.experience.motion-paused) {
 }
 
 /* Scroll supplies the depth on phones, where hover is unavailable. */
-@media (hover: none) and (pointer: coarse) and (prefers-reduced-motion: no-preference) {
+@media (hover: none) and (pointer: coarse) {
   .experience:not(.motion-paused) .featured > .card-image-wrap img,
   .experience:not(.motion-paused) .story-card .card-image-wrap img {
     transform: translateY(var(--touch-depth, 0px)) scale(1.12);
