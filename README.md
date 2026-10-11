@@ -1,6 +1,6 @@
 # Yoshibow profile website
 
-仏教・AI活用・コミュニティ・配信・アプリを紹介する静的サイトです。公開先は https://yoshibow-plofile.vercel.app/ です。
+仏教・AI活用・コミュニティ・配信・アプリを紹介する静的サイトです。公開先は https://yoshibow.org/ です。
 
 ## 開発
 
@@ -22,7 +22,8 @@ http://127.0.0.1:4173 で確認できます。ビルド工程は不要です。
 - `scripts/motion.js`: 動きの停止ボタンとOS設定の管理。
 - `scripts/enso.js`: 画面外・非表示タブで停止するCanvas描画。
 - `assets/visuals-v2/*.webp`: 配信用画像。
-- `api/contact.js`: 既存のResend連携。環境変数はVercelで管理します。
+- `worker/index.js`: Cloudflare Worker。静的ファイル配信、`/api/contact` のResend連携、wwwからの転送を担当します。
+- `wrangler.jsonc`: Cloudflare Workersの設定（独自ドメイン `yoshibow.org` / `www.yoshibow.org`）。
 
 ## 検証
 
@@ -35,14 +36,16 @@ macOSではインストール済みChromeを利用します。他の環境では
 
 4つの画面幅、画像読み込み、方向別アニメーション、アプリ切替、キーボード操作、モバイルメニュー、動きの停止、JavaScriptなしの表示、サポートページを検証します。スクリーンショットは `test-results/` に保存します。テストは問い合わせメールを送信しません。
 
-公開サイトの確認は `SITE_URL=https://yoshibow-plofile.vercel.app npm test` で実行できます。
+公開サイトの確認は `SITE_URL=https://yoshibow.org npm test` で実行できます。
 
 ## 公開
 
-既存Vercelプロジェクト `yoshibow-plofile` にリンクして利用します。
+Cloudflare Workers（`yoshibow-profile`）で https://yoshibow.org/ に公開しています。
 
 ```sh
-vercel --prod
+npx wrangler deploy
 ```
 
-`.vercelignore` により開発資料、テスト、生成画像のPNG原本を配信対象から除外します。制作プロンプトは `docs/visual-prompts.json` に記録しています。App Storeの価格・対応OS等はストア側で最新情報を確認する構成です。
+`.assetsignore` により開発資料、テスト、Worker本体、生成画像のPNG原本を配信対象から除外します。お問い合わせの送信先などは `npx wrangler secret put CONTACT_TO` / `RESEND_API_KEY` / `CONTACT_FROM` で設定します。旧URL `yoshibow-plofile.vercel.app` は yoshibow.org へ転送しています。
+
+制作プロンプトは `docs/visual-prompts.json` に記録しています。App Storeの価格・対応OS等はストア側で最新情報を確認する構成です。
